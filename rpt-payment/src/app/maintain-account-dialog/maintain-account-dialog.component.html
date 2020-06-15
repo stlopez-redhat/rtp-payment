@@ -1,0 +1,31 @@
+<div>
+  <div fxLayout='row'>
+    <h2>Banking</h2>
+  </div>
+  <div fxLayout='row'>
+    <mat-form-field>
+      <mat-label>Account Name</mat-label>
+      <input matInput>
+    </mat-form-field>
+  </div>
+  <div fxLayout='row'>
+    <mat-form-field>
+      <mat-label>Bank Routing Number</mat-label>
+      <input matInput>
+    </mat-form-field>
+  </div>
+  <div fxLayout='row'>
+    <mat-form-field>
+      <mat-label>Account Number</mat-label>
+      <input matInput>
+    </mat-form-field>
+  </div>
+  <div fxLayout='row' fxLayoutGap='20px'>
+    <button mat-raised-button matTooltip='Cancel Transaction' color="accent" (click)="onNoClick()">
+      Cancel
+    </button>
+    <button mat-raised-button matTooltip='Submit Transaction' color="primary">
+      Submit
+    </button>
+  </div>
+</div>

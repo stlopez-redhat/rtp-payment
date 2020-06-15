@@ -1,0 +1,88 @@
+<div>
+  <div fxLayout='row' fxLayoutGap='20px'>
+    <div fxFlex='20%'>
+      <mat-form-field>
+        <mat-label>Debit Account</mat-label>
+        <mat-select (selectionChange)="udpateAccountData($event)" [(ngModel)]="selectedDebtAccount">
+          <mat-option *ngFor="let account of accounts" [value]="account">
+            {{account.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button mat-flat-button matTooltip='Edit Debt' (click)="editAccountDialog()">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </div>
+    <div>
+      {{accountBalance |currency}}
+    </div>
+  </div>
+
+  <div fxLayout='row' fxLayoutGap='20px'>
+    <div fxFlex='20'>
+      <mat-form-field>
+        <mat-label>Payee</mat-label>
+        <mat-select placeholder="Select Payee" [(ngModel)]="selectedPayee">
+          <mat-option *ngFor="let account of payees" [value]="account.accountNum">
+            {{account.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button mat-flat-button matTooltip='Edit Payee' (click)="editPayeeDialog()">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </div>
+    <div>
+      <mat-form-field class="example-full-width">
+        <mat-label>Amount</mat-label>
+        <input matInput [(ngModel)]="payAmount" (keyup)="calculateBalance()">
+      </mat-form-field>
+    </div>
+  </div>
+  <br>
+  <div fxLayout='row' fxLayoutGap='20px' *ngIf="payAmount">
+    <div fxFlex='20' fxLayoutAlign="end center">
+      <label>Account Balance:</label>
+    </div>
+    <div>
+      {{newBalance |currency}}
+    </div>
+  </div>
+  <br>
+  <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="start center">
+    <div fxFlex="20">
+      <mat-radio-group aria-label="Select a payment option" [(ngModel)]="paymentType">
+        <mat-radio-button value="1">Immediate</mat-radio-button> &nbsp;
+        <mat-radio-button value="2">Scheduled</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <div *ngIf="paymentType==='2'">
+      <mat-form-field>
+        <mat-label>Schedule a Payment</mat-label>
+        <input matInput [matDatepicker]="picker">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+  </div>
+  <div fxLayout='row' fxLayoutGap='20px'>
+    <div fxFlex='20'>
+    </div>
+    <div>
+      <button mat-raised-button matTooltip='Submit Transaction' color="primary">
+        Submit
+      </button>
+    </div>
+  </div>
+
+  <!-- <button mat-mini-fab color="primary" matTooltip='Edit Payee'>
+      <mat-icon>edit</mat-icon>
+    </button>
+
+    <button mat-mini-fab color="primary" matTooltip='Add Payee'>
+      <mat-icon>add</mat-icon>
+    </button>
+
+    <button mat-mini-fab color="primary" matTooltip='Delete Payee'>
+      <mat-icon>delete</mat-icon>
+    </button> -->

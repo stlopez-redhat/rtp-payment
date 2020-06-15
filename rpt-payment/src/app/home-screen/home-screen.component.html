@@ -1,0 +1,52 @@
+<div fxLayout='row' fxLayoutGap='20px' fxLayoutAlign="center center" id="content">
+  The &nbsp;<b>Red Hat</b> &nbsp; Advantage
+</div>
+<div id="content2" fxLayoutAlign="center center">
+  <p class="speech-bubble">At <b>Red Hat</b> we have a passion for what we do! Working with multiple <b>Red Hat</b> products
+  as an integrated system to streamline your businesses rapidly with high fault tolerance and availability. Building effective
+  solutions cheaper, faster, better with a modern cloud native architecture.
+
+  </p>
+</div>
+<div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="center center" class="scrolling-wrapper">
+  <div fxFlex="5"></div>
+  <div fxFlex="5" fxLayoutAlign="center center">
+    <button mat-mini-fab color="primary" (click)="onPreviousSearchPosition()">
+      <mat-icon>chevron_left</mat-icon>
+    </button>
+  </div>
+  <div fxFlex="80" #panel style="overflow-x:scroll; height: 440px; padding-top: 10px;" >
+    <!-- <cdk-virtual-scroll-viewport orientation="horizontal" itemSize="50" class="example-viewport" #panel> -->
+      <div *ngFor="let subscription of getProductBenefits()" class="card rcorner">
+        <mat-card>
+          <mat-card-header fxLayoutAlign="center center">
+            <mat-card-title>{{subscription.title}}</mat-card-title>
+            <mat-card-subtitle>{{subscription.subtitle}}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <div *ngFor="let feature of subscription.featureList">
+              <span style="color: #ffffff"><mat-icon>check_circle</mat-icon> &nbsp; {{feature.desc}}</span>
+            </div>
+          </mat-card-content>
+          <mat-card-actions>
+            &nbsp;
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    <!-- </cdk-virtual-scroll-viewport> -->
+  </div>
+  <div fxFlex="5" fxLayoutAlign="center center">
+    <button mat-mini-fab color="primary" (click)="onNextSearchPosition()">
+      <mat-icon>chevron_right</mat-icon>
+    </button>
+  </div>
+  <div fxFlex="5"></div>
+</div>
+<div fxLayout='row' fxLayoutGap='20px' id="footer" fxLayoutAlign="center center">
+  <img src="../../../assets/img/Logo-Red_Hat-OpenShift-A-Standard-CMYK.jpg">
+  <img src="../../../assets/img/Logo-Red_Hat-3scale_API_Management-A-Standard-RGB.png">
+  <img src="../../../assets/img/Logo-Red_Hat-Fuse-A-Standard-RGB.png">
+  <img src="../../../assets/img/Logo-Red_Hat-AMQ_Online-A-Standard-RGB.png">
+  <img src="../../../assets/img/Logo-Red_Hat-Data_Grid-A-Standard-RGB.png">
+  <img src="../../../assets/img/Logo-Red_Hat-Decision_Manager-A-Standard-CMYK.jpg">
+</div>

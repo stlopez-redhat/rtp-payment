@@ -1,1 +1,53 @@
-<p>accounts-snapshot works!</p>
+<div fxLayoutAlign="center center" id="content">
+  Account Summary
+</div>
+<div>
+  <mat-accordion>
+    <mat-expansion-panel *ngFor="let account of accounts">
+      <mat-expansion-panel-header>
+        <mat-panel-title fxFlex="40">
+          {{account.name}}
+        </mat-panel-title>
+        <mat-panel-description>
+          {{account.accountType}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <p>{{account.balance}}</p>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
+<br>
+<div fxLayoutAlign="center center" id="content">
+  Transfer Between Accounts
+</div>
+<div fxLayout='row' fxLayoutGap='20px' fxLayoutAlign="start center">
+  <mat-form-field>
+    <mat-label>From Account</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let account of accounts" [value]="account.accountNum"
+        (onSelectionChange)="accountSelected($event)">
+        {{account.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Amount</mat-label>
+    <input matInput [(ngModel)]="payAmount" (keyup)="calculateBalance()" placeholder="123.13">
+  </mat-form-field>
+  &nbsp;
+
+  <mat-form-field>
+    <mat-label>To Account</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let account of accounts" [value]="account.accountNum"
+        (onSelectionChange)="accountSelected($event)">
+        {{account.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  &nbsp;
+  <button mat-raised-button matTooltip='Submit Transaction' color="primary">
+    Transfer
+  </button>
+</div>
