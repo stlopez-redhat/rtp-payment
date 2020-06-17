@@ -7,6 +7,9 @@
     <span flex></span>
     <div fxShow="true" fxHide.lt-md="true" style="margin-left: auto;">
       <label *ngIf="selectedUser">{{selectedUser.firstName}} {{selectedUser.lastName}}</label>
+      <button mat-button color="black" routerLink="/app-home-screen">
+        <mat-icon>home</mat-icon>Home
+      </button>
       <button mat-button color="black" routerLink="/app-accounts-snapshot">
         <mat-icon>account_balance</mat-icon>Snapshot
       </button>
