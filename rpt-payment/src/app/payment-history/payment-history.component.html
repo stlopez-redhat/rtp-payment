@@ -1,5 +1,15 @@
 <div>
-  <div fxLayout='row' fxLayoutGap='20px' fxLayoutAlign=''>
+  <div fxLayout='row' fxLayoutGap='20px'>
+    <mat-form-field>
+      <mat-label>View Account</mat-label>
+      <mat-select (selectionChange)="accountSelected($event)" [(ngModel)]="selectedAccount">
+        <mat-option *ngFor="let account of accounts" [value]="account">
+          {{account.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div fxLayout='row' fxLayoutGap='20px' *ngIf="selectedAccount">
     <mat-form-field>
       <mat-label>Choose start date</mat-label>
       <input matInput [matDatepicker]="startDate">
@@ -22,7 +32,7 @@
       <mat-icon matSuffix class="clear">close</mat-icon>
     </button>
   </div>
-  <div class="mat-elevation-z8">
+  <div class="mat-elevation-z8" >
     <table mat-table [dataSource]="dataSource">
 
       <!-- Position Column -->

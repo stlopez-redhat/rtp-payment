@@ -17,6 +17,7 @@ export class ClientPaymentComponent implements OnInit {
   payAmount: number;
   newBalance: number;
   paymentType: string;
+  recurringPayment: string;
   accountInfo: BankingAccountInfo[];
   accounts: BankingAccountInfo[];
   payees: BankingAccountInfo[];
@@ -38,6 +39,7 @@ export class ClientPaymentComponent implements OnInit {
     this.payAmount = null;
     this.newBalance = null;
     this.paymentType = null;
+    this.recurringPayment = null;
     this.selectedPayee = null;
   }
 

@@ -14,7 +14,9 @@
       </button>
     </div>
     <div>
-      {{accountBalance |currency}}
+    <mat-form-field>
+      <input matInput type="text" placeholder="Account Balance" [ngModel]="accountBalance | currency:'USD':'symbol':'2.2'" readonly>
+    </mat-form-field>
     </div>
   </div>
 
@@ -40,12 +42,14 @@
     </div>
   </div>
   <br>
-  <div fxLayout='row' fxLayoutGap='20px' *ngIf="payAmount">
+  <div fxLayout='row' fxLayoutGap='20px' >
     <div fxFlex='20' fxLayoutAlign="end center">
-      <label>Account Balance:</label>
+      &nbsp;
     </div>
     <div>
-      {{newBalance |currency}}
+    <mat-form-field>
+      <input matInput type="text" placeholder="New Balance" [ngModel]="newBalance | currency:'USD':'symbol':'2.2'" readonly>
+    </mat-form-field>
     </div>
   </div>
   <br>
@@ -56,13 +60,20 @@
         <mat-radio-button value="2">Scheduled</mat-radio-button>
       </mat-radio-group>
     </div>
-    <div *ngIf="paymentType==='2'">
+    <div fxFlex="15" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" *ngIf="paymentType==='2'">
       <mat-form-field>
         <mat-label>Schedule a Payment</mat-label>
         <input matInput [matDatepicker]="picker">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
+    </div>
+    <div fxLayoutAlign="start center" *ngIf="paymentType==='2'">
+      <mat-radio-group fxLayout="column" aria-label="Select a payment option" [(ngModel)]="recurringPayment">
+        <mat-radio-button value="1">Recurring Weekly</mat-radio-button>
+        <mat-radio-button value="2">Recurring Bi-Weekly</mat-radio-button>
+        <mat-radio-button value="3">Recurring Monthly</mat-radio-button>
+      </mat-radio-group>
     </div>
   </div>
   <div fxLayout='row' fxLayoutGap='20px'>
