@@ -70,9 +70,10 @@
     </div>
     <div fxLayoutAlign="start center" *ngIf="paymentType==='2'">
       <mat-radio-group fxLayout="column" aria-label="Select a payment option" [(ngModel)]="recurringPayment">
-        <mat-radio-button value="1">Recurring Weekly</mat-radio-button>
-        <mat-radio-button value="2">Recurring Bi-Weekly</mat-radio-button>
-        <mat-radio-button value="3">Recurring Monthly</mat-radio-button>
+        <mat-radio-button value="1">One Time</mat-radio-button>
+        <mat-radio-button value="2">Recurring Weekly</mat-radio-button>
+        <mat-radio-button value="3">Recurring Bi-Weekly</mat-radio-button>
+        <mat-radio-button value="4">Recurring Monthly</mat-radio-button>
       </mat-radio-group>
     </div>
   </div>
