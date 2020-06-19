@@ -4,6 +4,7 @@ import { ProductsDemosService } from '../_services/products-demos.service';
 import { ProjectDemo } from '../common/model/project-demo';
 import { UserProfile } from '../common/model/user-profile';
 import { UserDataService } from '../_services/user-data.service';
+import { RedhatTechnologies } from '../../app/common/model/redhat-technologies';
 
 @Component({
   selector: 'app-home-screen',
@@ -19,6 +20,7 @@ export class HomeScreenComponent implements OnInit {
   selectedUser: UserProfile | null;
   selectedProject: ProjectDemo | null;
   users: UserProfile[] | null;
+  redhatTech: RedhatTechnologies[] | null;
 
   constructor(private productsDemosService: ProductsDemosService, private userDataService: UserDataService) { }
 
@@ -67,6 +69,15 @@ export class HomeScreenComponent implements OnInit {
 
   setProject($event) {
     this.productsDemosService.setSelectedDemo(this.selectedProject);
+    this.filterRedHatTech();
+  }
+
+  private filterRedHatTech() {
+    this.productsDemosService.getRedHatTechnologies()
+    .subscribe((technologies: RedhatTechnologies[]) => {
+
+      this.redhatTech = technologies;
+    });
   }
 
 }
