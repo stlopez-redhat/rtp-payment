@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
+import { of, BehaviorSubject } from 'rxjs';
 import { SYSTEMUSERS } from '../../assets/data/user-accounts';
 import { UserProfile } from '../common/model/user-profile';
 
@@ -7,7 +7,8 @@ import { UserProfile } from '../common/model/user-profile';
   providedIn: 'root'
 })
 export class UserDataService {
-  user: UserProfile;
+  private user: UserProfile;
+  private user$ = new BehaviorSubject(this.user);
 
   constructor() { }
 
@@ -17,13 +18,12 @@ export class UserDataService {
 
 
   getUser() {
-    console.log(this.user);
-    return of(this.user);
+    return this.user$.asObservable();
   }
 
   setUser(user: UserProfile) {
     this.user = user;
-    console.log(this.user);
+    this.user$.next(this.user);
   }
 
 }

@@ -6,7 +6,7 @@
     <img src="./assets/img/logo-white-letters.png" style="margin:0;width: 135px; color:white;" title="Red Hat" />&nbsp;
     <span flex></span>
     <div fxShow="true" fxHide.lt-md="true" style="margin-left: auto;">
-      <label *ngIf="selectedUser">{{selectedUser.firstName}} {{selectedUser.lastName}}</label>
+      <label *ngIf="user">{{user.firstName}} {{user.lastName}}</label>
       <button mat-button color="black" routerLink="/app-home-screen">
         <mat-icon>home</mat-icon>Home
       </button>
@@ -22,28 +22,7 @@
     </div>
   </mat-toolbar>
 </nav>
-<div fxLayout='row'>
-  <div fxFlex="50" fxLayoutAlign="start center">
-    <mat-form-field>
-      <mat-label>Select Project</mat-label>
-      <mat-select (selectionChange)="setProject($event)" [(ngModel)]="selectedProject">
-        <mat-option *ngFor="let project of productDemos" [value]="project">
-          {{project.name}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-  </div>
-  <div fxFlex="50" fxLayoutAlign="end center">
-    <mat-form-field>
-      <mat-label>Simulate User Experience</mat-label>
-      <mat-select (selectionChange)="setUser($event)" [(ngModel)]="selectedUser">
-        <mat-option *ngFor="let user of users" [value]="user">
-          {{user.firstName}} {{ user.lastName}} / {{user.role}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-  </div>
-</div>
+
 <div class="content">
   <router-outlet></router-outlet>
 </div>
