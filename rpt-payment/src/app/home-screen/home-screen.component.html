@@ -1,14 +1,15 @@
 <div fxLayout='row' fxLayoutGap='20px' fxLayoutAlign="center center" id="content">
   The &nbsp;<b>Red Hat</b> &nbsp; Advantage
 </div>
-<div id="content2" fxLayoutAlign="center center">
-  <p class="speech-bubble">At <b>Red Hat</b> we have a passion for what we do! Working with multiple <b>Red Hat</b> products
+<div id="content2" fxLayoutAlign="center center" *ngIf="productDemos">
+  {{productDemos.name}} {{productDemos.desc}}
+  <!-- <p class="speech-bubble">At <b>Red Hat</b> we have a passion for what we do! Working with multiple <b>Red Hat</b> products
   as an integrated system to streamline your businesses rapidly with high fault tolerance and availability. Building effective
   solutions cheaper, faster, better with a modern cloud native architecture.
 
-  </p>
+  </p> -->
 </div>
-<div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="center center" class="scrolling-wrapper">
+<div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="center center" class="scrolling-wrapper" *ngIf="productDemos">
   <div fxFlex="5"></div>
   <div fxFlex="5" fxLayoutAlign="center center">
     <button mat-mini-fab color="primary" (click)="onPreviousSearchPosition()">

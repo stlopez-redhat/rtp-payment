@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject, ChangeDetectionStrategy, ViewEncapsulation, ViewChild, ElementRef } from '@angular/core';
 import { ProductBenefits } from '../common/model/product-benefits';
-import { ProductBenefitsService } from '../_services/product-benefits.service';
+import { ProductsDemosService } from '../_services/products-demos.service';
+import { ProjectDemo } from '../common/model/project-demo';
 
 @Component({
   selector: 'app-home-screen',
@@ -10,13 +11,19 @@ import { ProductBenefitsService } from '../_services/product-benefits.service';
 export class HomeScreenComponent implements OnInit {
   @ViewChild('panel', { read: ElementRef }) public panel: ElementRef<any>;
   productBenefits: ProductBenefits[];
+  productDemos: ProjectDemo | null;
 
-  constructor(private productBenefitsService: ProductBenefitsService) { }
+  constructor(private productsDemosService: ProductsDemosService) { }
 
   ngOnInit() {
-    this.productBenefitsService.getProductBenefits()
+    this.productsDemosService.getProductBenefits()
     .subscribe((benefits: ProductBenefits[]) => {
       this.productBenefits = benefits;
+    });
+
+    this.productsDemosService.getSelectedDemo()
+    .subscribe((projectDemo: ProjectDemo) => {
+      this.productDemos = projectDemo;
     });
   }
 

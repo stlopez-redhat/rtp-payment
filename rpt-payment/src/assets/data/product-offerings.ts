@@ -7,24 +7,24 @@ export const PRODUCTOFFERINGS: ProductBenefits[] = [
     id: '3', title: 'Open Banking', subtitle: 'Open Banking',
     featureList: [
       { id: '3', name: 'feature 1', desc: 'testing' },
-      { id: '4', name: 'feature 1', desc: 'feature 2' }]
+      { id: '4', name: 'feature 2', desc: 'feature 2' }]
   },
   {
     id: '3', title: 'Open Banking', subtitle: 'Open Banking Testing',
     featureList: [
       { id: '3', name: 'feature 1', desc: 'testing' },
-      { id: '4', name: 'feature 1', desc: 'feature 2' }]
+      { id: '4', name: 'feature 2', desc: 'feature 2' }]
   },
   {
     id: '3', title: 'Open Banking', subtitle: 'Open Banking',
     featureList: [
       { id: '3', name: 'feature 1', desc: 'testing' },
-      { id: '4', name: 'feature 1', desc: 'feature 2' }]
+      { id: '4', name: 'feature 2', desc: 'feature 2' }]
   },
   {
     id: '3', title: 'Open Banking', subtitle: 'Open Banking',
     featureList: [
       { id: '3', name: 'feature 1', desc: 'testing' },
-      { id: '4', name: 'feature 1', desc: 'feature 2' }]
+      { id: '4', name: 'feature 2', desc: 'feature 2' }]
   }
 ]

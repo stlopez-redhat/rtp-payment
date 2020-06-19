@@ -18,7 +18,7 @@ import { PaymentConfirmationComponent } from './payment-confirmation/payment-con
 import { MaintainAccountDialogComponent } from './maintain-account-dialog/maintain-account-dialog.component';
 import { MaintainPayeeDialogComponent } from './maintain-payee-dialog/maintain-payee-dialog.component';
 import { HomeScreenComponent } from './home-screen/home-screen.component';
-import { ProductBenefitsService } from './_services/product-benefits.service';
+import { ProductsDemosService } from './_services/products-demos.service';
 import { AccountInfoService } from './_services/account-info.service';
 
 @NgModule({
@@ -50,7 +50,7 @@ import { AccountInfoService } from './_services/account-info.service';
     HomeScreenComponent
   ],
   providers: [
-    ProductBenefitsService,
+    ProductsDemosService,
     AccountInfoService
   ],
   bootstrap: [AppComponent]
