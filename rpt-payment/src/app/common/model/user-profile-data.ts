@@ -1,4 +1,6 @@
-export interface UserProfile {
+import { UserProfile } from './user-profile';
+
+export class UserProfileData implements UserProfile {
   id: string;
   firstName: string;
   lastName: string;
@@ -11,4 +13,5 @@ export interface UserProfile {
   cellPhone: string;
   email: string;
   role: string;
+
 }
