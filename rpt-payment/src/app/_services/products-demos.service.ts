@@ -14,16 +14,16 @@ export class ProductsDemosService {
 
   constructor() { }
 
-  getProductDemos() {
-    return of(PROJECTDEMO);
-  }
-
   getProductBenefits() {
     return of(PRODUCTOFFERINGS);
   }
 
   getRedHatTechnologies() {
     return of(REDHATPRODUCTS);
+  }
+
+  getProductDemos() {
+    return of(PROJECTDEMO);
   }
 
   getSelectedDemo() {

@@ -25,26 +25,35 @@ export class HomeScreenComponent implements OnInit {
   constructor(private productsDemosService: ProductsDemosService, private userDataService: UserDataService) { }
 
   ngOnInit() {
+    // user data
     this.userDataService.getSystemUsers()
       .subscribe((userData: UserProfile[]) => {
         this.users = userData;
       });
 
+    // card information
     this.productsDemosService.getProductBenefits()
     .subscribe((benefits: ProductBenefits[]) => {
       this.productBenefits = benefits;
     });
 
+    // all project types
     this.productsDemosService.getProductDemos()
       .subscribe((demos: ProjectDemo[]) => {
         console.log(demos);
         this.productDemos = demos;
       });
 
+    // selected project
     this.productsDemosService.getSelectedDemo()
     .subscribe((projectDemo: ProjectDemo) => {
       this.productDemo = projectDemo;
     });
+
+    this.productsDemosService.getRedHatTechnologies()
+      .subscribe((redhatTechnologies: RedhatTechnologies[]) => {
+        this.redhatTech = redhatTechnologies;
+      });
   }
 
   public onPreviousSearchPosition(): void {

@@ -28,13 +28,13 @@
     <p>{{productDemo.desc}}</p>
   </div>
   <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="center center" class="scrolling-wrapper" *ngIf="productDemos">
-    <div fxFlex="5"></div>
+    <!-- <div fxFlex="5"></div> -->
     <div fxFlex="5" fxLayoutAlign="center center">
       <button mat-mini-fab color="primary" (click)="onPreviousSearchPosition()">
         <mat-icon>chevron_left</mat-icon>
       </button>
     </div>
-    <div fxFlex="80" #panel style="overflow-x:scroll; height: 440px; padding-top: 10px;">
+    <div fxFlex="90" #panel style="overflow-x:scroll; height: 440px; padding-top: 10px;">
       <!-- <cdk-virtual-scroll-viewport orientation="horizontal" itemSize="50" class="example-viewport" #panel> -->
       <div *ngFor="let subscription of getProductBenefits()" class="card rcorner">
         <mat-card>
@@ -61,14 +61,11 @@
         <mat-icon>chevron_right</mat-icon>
       </button>
     </div>
-    <div fxFlex="5"></div>
+    <!-- <div fxFlex="5"></div> -->
   </div>
   <div fxLayout='row' fxLayoutGap='20px' id="footer" fxLayoutAlign="center center">
-    <img src="../../../assets/img/Logo-Red_Hat-OpenShift-A-Standard-CMYK.jpg">
-    <img src="../../../assets/img/Logo-Red_Hat-3scale_API_Management-A-Standard-RGB.png">
-    <img src="../../../assets/img/Logo-Red_Hat-Fuse-A-Standard-RGB.png">
-    <img src="../../../assets/img/Logo-Red_Hat-AMQ_Online-A-Standard-RGB.png">
-    <img src="../../../assets/img/Logo-Red_Hat-Data_Grid-A-Standard-RGB.png">
-    <img src="../../../assets/img/Logo-Red_Hat-Decision_Manager-A-Standard-CMYK.jpg">
+    <span *ngFor="let tech of redhatTech" style="height: 40px;">
+      <img src="{{tech.imgUrl}}">
+    </span>
   </div>
 </div>
