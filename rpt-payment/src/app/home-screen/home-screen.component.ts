@@ -40,7 +40,6 @@ export class HomeScreenComponent implements OnInit {
     // all project types
     this.productsDemosService.getProductDemos()
       .subscribe((demos: ProjectDemo[]) => {
-        console.log(demos);
         this.productDemos = demos;
       });
 

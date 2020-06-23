@@ -13,7 +13,6 @@ export class ClientTasksComponent implements OnInit {
   constructor(private userDataService: UserDataService) { }
 
   ngOnInit(): void {
-    console.log("OnInit for Client Task");
     this.userDataService.getUser()
     .subscribe((userData: UserProfile) => {
       this.user = userData;

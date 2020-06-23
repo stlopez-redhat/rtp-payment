@@ -4,6 +4,8 @@ import { MaintainAccountDialogComponent } from '../maintain-account-dialog/maint
 import { MaintainPayeeDialogComponent } from '../maintain-payee-dialog/maintain-payee-dialog.component';
 import { AccountInfoService } from '../_services/account-info.service';
 import { BankingAccountInfo } from '../common/model/banking-account-info';
+import { UserDataService } from '../_services/user-data.service';
+import { UserProfile } from '../common/model/user-profile';
 
 @Component({
   selector: 'app-client-payment',
@@ -21,15 +23,21 @@ export class ClientPaymentComponent implements OnInit {
   accountInfo: BankingAccountInfo[];
   accounts: BankingAccountInfo[];
   payees: BankingAccountInfo[];
+  user: UserProfile | null;
 
-  constructor(public dialog: MatDialog, private accountInfoService: AccountInfoService) { }
+  constructor(public dialog: MatDialog, private accountInfoService: AccountInfoService, private userDataService: UserDataService) { }
 
   ngOnInit(): void {
+    this.userDataService.getUser()
+    .subscribe((user: UserProfile) => {
+      this.user = user;
+    });
+
     this.accountInfoService.getAccountInfo()
     .subscribe((account: BankingAccountInfo[]) => {
       this.accountInfo = account;
     });
-    this.accounts = this.accountInfo.filter(account => account.accountType !== 'Payee');
+    this.accounts = this.accountInfo.filter(account => ((account.accountType !== 'Payee') && (account.userId === this.user.id)));
     this.payees = this.accountInfo.filter(account => account.accountType === 'Payee');
   }
 

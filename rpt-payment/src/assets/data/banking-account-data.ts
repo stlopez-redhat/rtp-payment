@@ -14,6 +14,10 @@ export const BANKACCOUNTS: BankingAccountInfo[] = [
     balance: 30000, dateAdded: '10/2/2009', dateRemove: ''
   },
   {
+    userId: '2', routingNum: '123', accountNum: '837410', accountType: 'Checking', name: 'Monthly Bills', description: 'Personal Checking',
+    balance: 25000, dateAdded: '1/24/2001', dateRemove: ''
+  },
+  {
     userId: '1', routingNum: '123', accountNum: '0391782', accountType: 'Payee', name: 'OUC Utilities', description: 'Home Utilities',
     balance: 350, dateAdded: '10/2/2009', dateRemove: ''
   },
