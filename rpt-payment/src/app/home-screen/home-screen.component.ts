@@ -88,10 +88,7 @@ export class HomeScreenComponent implements OnInit {
     // this.selectedProject.redhatTechId.forEach(function(value: number) {
       console.log(this.selectedProject.redhatTechId[i]);
       this.projectTech.push(this.redhatTech[this.selectedProject.redhatTechId[i]]);
-      // console.log(this.redhatTech[i]);
-      // this.projectTech.push(this.redhatTech[this.selectedProject.redhatTechId[i]];
     }
-    console.log(this.projectTech);
   }
 
 }
