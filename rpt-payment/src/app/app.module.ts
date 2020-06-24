@@ -38,9 +38,9 @@ import { AccountInfoService } from './_services/account-info.service';
     HomeScreenComponent
   ],
   imports: [
+    MaterialModule,
     BrowserModule,
     AppRoutingModule,
-    MaterialModule,
     FlexLayoutModule,
     ReactiveFormsModule,
     FormsModule,

@@ -5,6 +5,7 @@ import { ProjectDemo } from '../common/model/project-demo';
 import { UserProfile } from '../common/model/user-profile';
 import { UserDataService } from '../_services/user-data.service';
 import { RedhatTechnologies } from '../../app/common/model/redhat-technologies';
+import { RedhatTech } from '../common/model/redhat-tech';
 
 @Component({
   selector: 'app-home-screen',
@@ -21,6 +22,7 @@ export class HomeScreenComponent implements OnInit {
   selectedProject: ProjectDemo | null;
   users: UserProfile[] | null;
   redhatTech: RedhatTechnologies[] | null;
+  projectTech = new Array<any>();
 
   constructor(private productsDemosService: ProductsDemosService, private userDataService: UserDataService) { }
 
@@ -81,11 +83,15 @@ export class HomeScreenComponent implements OnInit {
   }
 
   private filterRedHatTech() {
-    this.productsDemosService.getRedHatTechnologies()
-    .subscribe((technologies: RedhatTechnologies[]) => {
-
-      this.redhatTech = technologies;
-    });
+    this.projectTech = [];
+    for (let i = 0; i < this.selectedProject.redhatTechId.length; i++) {
+    // this.selectedProject.redhatTechId.forEach(function(value: number) {
+      console.log(this.selectedProject.redhatTechId[i]);
+      this.projectTech.push(this.redhatTech[this.selectedProject.redhatTechId[i]]);
+      // console.log(this.redhatTech[i]);
+      // this.projectTech.push(this.redhatTech[this.selectedProject.redhatTechId[i]];
+    }
+    console.log(this.projectTech);
   }
 
 }
