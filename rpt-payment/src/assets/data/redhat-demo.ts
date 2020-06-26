@@ -6,11 +6,11 @@ export const PROJECTDEMO: ProjectDemo[] = [
     'integrated system to streamline your businesses rapidly with high fault tolerance and availability. ' +
     'Building effective solutions cheaper, faster, better with a modern cloud native architecture.',
     redhatTechId: [0, 1, 2],
-    productBenefitsId: [1]
+    productBenefitsId: [0]
   },
   {id: '2', name: 'Real Time Payments', title: 'Red Hat Real Time Payments',
     desc: 'Real Time Payments with Red Hat is AWESOME',
     redhatTechId: [3, 4, 5],
-    productBenefitsId: [2, 3]
+    productBenefitsId: [1, 2, 3, 4]
   }
 ];
