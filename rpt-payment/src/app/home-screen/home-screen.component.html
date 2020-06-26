@@ -2,7 +2,7 @@
   <div fxFlex="50" fxLayoutAlign="start center">
     <mat-form-field>
       <mat-label>Select Project</mat-label>
-      <mat-select (selectionChange)="setProject($event)" [(ngModel)]="selectedProject">
+      <mat-select (selectionChange)="setProject()" [(ngModel)]="selectedProject">
         <mat-option *ngFor="let project of productDemos" [value]="project">
           {{project.name}}
         </mat-option>
@@ -34,7 +34,7 @@
         <mat-icon>chevron_left</mat-icon>
       </button>
     </div>
-    <div fxFlex="90" #panel style="overflow-x:scroll; height: 440px; padding-top: 10px;">
+    <div fxFlex="90" #panel style="overflow-x:scroll; height: 440px; padding-top: 10px;" fxLayoutAlign="center center">
       <!-- <cdk-virtual-scroll-viewport orientation="horizontal" itemSize="50" class="example-viewport" #panel> -->
       <div *ngFor="let subscription of projectCards" class="card rcorner">
         <mat-card>

@@ -50,6 +50,7 @@ export class HomeScreenComponent implements OnInit {
     this.productsDemosService.getSelectedDemo()
     .subscribe((projectDemo: ProjectDemo) => {
       this.productDemo = projectDemo;
+      // this.setProject();
     });
 
     this.productsDemosService.getRedHatTechnologies()
@@ -78,7 +79,7 @@ export class HomeScreenComponent implements OnInit {
     this.userDataService.setUser(this.selectedUser);
   }
 
-  setProject($event) {
+  setProject() {
     this.productsDemosService.setSelectedDemo(this.selectedProject);
     this.filterRedHatTech();
     this.filterCards();

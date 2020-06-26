@@ -5,7 +5,7 @@ export const PROJECTDEMO: ProjectDemo[] = [
     desc: 'At Red Hat we have a passion for what we do! Working with multiple Red Hat products as an ' +
     'integrated system to streamline your businesses rapidly with high fault tolerance and availability. ' +
     'Building effective solutions cheaper, faster, better with a modern cloud native architecture.',
-    redhatTechId: [0, 1, 2],
+    redhatTechId: [0, 1, 2, 5],
     productBenefitsId: [0]
   },
   {id: '2', name: 'Real Time Payments', title: 'Red Hat Real Time Payments',
