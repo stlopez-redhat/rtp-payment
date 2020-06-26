@@ -23,6 +23,7 @@ export class HomeScreenComponent implements OnInit {
   users: UserProfile[] | null;
   redhatTech: RedhatTechnologies[] | null;
   projectTech = new Array<any>();
+  projectCards = new Array<any>();
 
   constructor(private productsDemosService: ProductsDemosService, private userDataService: UserDataService) { }
 
@@ -80,14 +81,22 @@ export class HomeScreenComponent implements OnInit {
   setProject($event) {
     this.productsDemosService.setSelectedDemo(this.selectedProject);
     this.filterRedHatTech();
+    this.filterCards();
   }
 
   private filterRedHatTech() {
     this.projectTech = [];
     for (let i = 0; i < this.selectedProject.redhatTechId.length; i++) {
     // this.selectedProject.redhatTechId.forEach(function(value: number) {
-      console.log(this.selectedProject.redhatTechId[i]);
       this.projectTech.push(this.redhatTech[this.selectedProject.redhatTechId[i]]);
+    }
+  }
+
+  private filterCards() {
+    this.projectCards = [];
+    for (let i = 0; i < this.selectedProject.productBenefitsId.length; i++) {
+      // this.selectedProject.redhatTechId.forEach(function(value: number) {
+      this.projectCards.push(this.productBenefits[this.selectedProject.productBenefitsId[i]]);
     }
   }
 

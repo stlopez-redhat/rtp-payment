@@ -36,7 +36,7 @@
     </div>
     <div fxFlex="90" #panel style="overflow-x:scroll; height: 440px; padding-top: 10px;">
       <!-- <cdk-virtual-scroll-viewport orientation="horizontal" itemSize="50" class="example-viewport" #panel> -->
-      <div *ngFor="let subscription of getProductBenefits()" class="card rcorner">
+      <div *ngFor="let subscription of projectCards" class="card rcorner">
         <mat-card>
           <mat-card-header fxLayoutAlign="center center">
             <mat-card-title>{{subscription.title}}</mat-card-title>

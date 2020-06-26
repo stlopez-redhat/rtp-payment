@@ -4,4 +4,5 @@ export interface ProjectDemo {
   title: string;
   desc: string;
   redhatTechId: number[];
+  productBenefitsId: number[];
 }

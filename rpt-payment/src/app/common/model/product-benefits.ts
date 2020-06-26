@@ -1,7 +1,7 @@
 import { ProductFeatures } from './product-features';
 
 export interface ProductBenefits {
-  id: string;
+  id: number;
   title: string;
   subtitle: string;
   featureList: ProductFeatures[];
