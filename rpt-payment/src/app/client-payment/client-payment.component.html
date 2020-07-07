@@ -27,7 +27,7 @@
         <mat-label>Payee</mat-label>
         <mat-select [(ngModel)]="selectedPayee">
           <mat-option [value]="null">--Add Payee--</mat-option>
-          <mat-option *ngFor="let account of payees" [value]="account.accountNum">
+          <mat-option *ngFor="let account of payees" [value]="account">
             {{account.name}}
           </mat-option>
         </mat-select>

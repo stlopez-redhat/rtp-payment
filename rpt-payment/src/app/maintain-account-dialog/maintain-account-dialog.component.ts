@@ -19,7 +19,7 @@ export class MaintainAccountDialogComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if(this.data.selectedDebtAccount !== null && this.data.selectedDebtAccount !== undefined){
+    if (this.data.selectedDebtAccount !== null && this.data.selectedDebtAccount !== undefined){
       this.isEdit = true;
 
       this.debitAccountFormGroup = this.formBuilder.group({
