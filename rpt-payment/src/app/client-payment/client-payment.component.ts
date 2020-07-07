@@ -56,9 +56,10 @@ export class ClientPaymentComponent implements OnInit {
   }
 
   public editAccountDialog(): void {
+    console.log(this.selectedDebtAccount);
     const dialogRef = this.dialog.open(MaintainAccountDialogComponent, {
       width: '450px',
-      data: {paymentAmount: this.payAmount, payeeName: '', accountName: '', newBalance: this.newBalance}
+      data: {selectedDebtAccount: this.selectedDebtAccount}
     });
 
     dialogRef.afterClosed().subscribe(result => {

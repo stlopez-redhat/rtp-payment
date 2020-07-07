@@ -1,6 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { PaymentConfirmation } from '../common/model/payment-confirmation';
+import { BankingAccountInfo } from '../common/model/banking-account-info';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   templateUrl: './maintain-account-dialog.component.html',
@@ -9,19 +11,38 @@ import { PaymentConfirmation } from '../common/model/payment-confirmation';
 export class MaintainAccountDialogComponent implements OnInit {
   paymentConfirmation: PaymentConfirmation[];
   searchText: string;
+  debitAccountFormGroup: FormGroup;
+  isEdit = false;
 
-  constructor(public dialogRef: MatDialogRef<MaintainAccountDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any) {
+  constructor(private formBuilder: FormBuilder, public dialogRef: MatDialogRef<MaintainAccountDialogComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: any) {
   }
 
   ngOnInit(): void {
+    if(this.data.selectedDebtAccount !== undefined){
+      this.isEdit = true;
+
+      this.debitAccountFormGroup = this.formBuilder.group({
+        name: [this.data.selectedDebtAccount.name, Validators.required],
+        routingNum: [this.data.selectedDebtAccount.routingNum, Validators.required],
+        accountNum: [this.data.selectedDebtAccount.accountNum, Validators.required]
+      });
+    } else {
+      this.debitAccountFormGroup = this.formBuilder.group({
+        name: ['', Validators.required],
+        routingNum: [, Validators.required],
+        accountNum: [, Validators.required]
+      });
+    }
   }
 
   onNoClick(): void {
     this.dialogRef.close();
   }
 
+  onSubmit() {}
+
   public applyFilter() {
-    console.log("search");
+    console.log('search');
   }
 }

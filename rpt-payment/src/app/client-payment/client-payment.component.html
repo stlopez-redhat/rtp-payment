@@ -4,6 +4,7 @@
       <mat-form-field>
         <mat-label>Debit Account</mat-label>
         <mat-select (selectionChange)="udpateAccountData($event)" [(ngModel)]="selectedDebtAccount">
+          <mat-option [value]="null">--Add Account--</mat-option>
           <mat-option *ngFor="let account of accounts" [value]="account">
             {{account.name}}
           </mat-option>
@@ -25,6 +26,7 @@
       <mat-form-field>
         <mat-label>Payee</mat-label>
         <mat-select placeholder="Select Payee" [(ngModel)]="selectedPayee">
+          <mat-option [value]="null">--Add Payee--</mat-option>
           <mat-option *ngFor="let account of payees" [value]="account.accountNum">
             {{account.name}}
           </mat-option>

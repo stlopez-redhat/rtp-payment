@@ -1,3 +1,4 @@
+<form [formGroup]="debitAccountFormGroup" (ngSubmit)="onSubmit()">
 <div>
   <div fxLayout='row'>
     <h2>Banking</h2>
@@ -5,27 +6,34 @@
   <div fxLayout='row'>
     <mat-form-field>
       <mat-label>Account Name</mat-label>
-      <input matInput>
+      <input matInput type="text" formControlName="name" required7>
     </mat-form-field>
   </div>
   <div fxLayout='row'>
     <mat-form-field>
       <mat-label>Bank Routing Number</mat-label>
-      <input matInput>
+      <input matInput type="text" formControlName="routingNum">
     </mat-form-field>
   </div>
   <div fxLayout='row'>
     <mat-form-field>
       <mat-label>Account Number</mat-label>
-      <input matInput>
+      <input matInput type="text" formControlName="accountNum">
     </mat-form-field>
   </div>
   <div fxLayout='row' fxLayoutGap='20px'>
     <button mat-raised-button matTooltip='Cancel Transaction' color="accent" (click)="onNoClick()">
       Cancel
     </button>
-    <button mat-raised-button matTooltip='Submit Transaction' color="primary">
-      Submit
+    <button *ngIf="isEdit" mat-raised-button matTooltip='Update Transaction' color="primary">
+      Update
+    </button>
+    <button *ngIf="isEdit" mat-raised-button matTooltip='Delete Transaction' color="error">
+      Delete
+    </button>
+    <button *ngIf="!isEdit" mat-raised-button matTooltip='Add Transaction' color="primary">
+      Add
     </button>
   </div>
 </div>
+</form>
