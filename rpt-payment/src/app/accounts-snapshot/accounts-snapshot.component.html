@@ -12,7 +12,13 @@
           {{account.accountType}}
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <p>{{account.balance}}</p>
+      <div fxLayout="row" fxLayoutGap='10px'>
+        <b>Balance:</b><span>{{account.balance | currency}}</span>
+      </div>
+      <div fxLayout="row" fxLayoutGap='10px'>
+        <b>Routing Number:</b> <span>{{account.routingNum}}</span>
+        <b>Account Number:</b> <span>{{account.accountNum}}</span>
+      </div>
     </mat-expansion-panel>
   </mat-accordion>
 </div>
