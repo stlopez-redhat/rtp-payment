@@ -24,6 +24,7 @@
   <mat-form-field>
     <mat-label>From Account</mat-label>
     <mat-select>
+      <mat-option [value]="null"></mat-option>
       <mat-option *ngFor="let account of accounts" [value]="account.accountNum"
         (onSelectionChange)="accountSelected($event)">
         {{account.name}}
@@ -40,6 +41,7 @@
   <mat-form-field>
     <mat-label>To Account</mat-label>
     <mat-select>
+      <mat-option [value]="null"></mat-option>
       <mat-option *ngFor="let account of accounts" [value]="account.accountNum"
         (onSelectionChange)="accountSelected($event)">
         {{account.name}}

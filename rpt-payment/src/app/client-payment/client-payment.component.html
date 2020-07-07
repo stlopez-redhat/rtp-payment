@@ -25,7 +25,7 @@
     <div fxFlex='20'>
       <mat-form-field>
         <mat-label>Payee</mat-label>
-        <mat-select placeholder="Select Payee" [(ngModel)]="selectedPayee">
+        <mat-select [(ngModel)]="selectedPayee">
           <mat-option [value]="null">--Add Payee--</mat-option>
           <mat-option *ngFor="let account of payees" [value]="account.accountNum">
             {{account.name}}
