@@ -43,7 +43,11 @@ export class ClientPaymentComponent implements OnInit {
 
   public udpateAccountData(event) {
     this.selectedDebtAccount = event.source.value;
-    this.accountBalance = this.selectedDebtAccount.balance;
+    if(this.selectedDebtAccount !== null){
+      this.accountBalance = this.selectedDebtAccount.balance;
+    } else {
+      this.accountBalance = null;
+    }
     this.payAmount = null;
     this.newBalance = null;
     this.paymentType = null;
@@ -56,7 +60,6 @@ export class ClientPaymentComponent implements OnInit {
   }
 
   public editAccountDialog(): void {
-    console.log(this.selectedDebtAccount);
     const dialogRef = this.dialog.open(MaintainAccountDialogComponent, {
       width: '450px',
       data: {selectedDebtAccount: this.selectedDebtAccount}

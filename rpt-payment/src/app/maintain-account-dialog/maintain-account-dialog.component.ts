@@ -19,7 +19,7 @@ export class MaintainAccountDialogComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if(this.data.selectedDebtAccount !== undefined){
+    if(this.data.selectedDebtAccount !== null && this.data.selectedDebtAccount !== undefined){
       this.isEdit = true;
 
       this.debitAccountFormGroup = this.formBuilder.group({
@@ -28,6 +28,7 @@ export class MaintainAccountDialogComponent implements OnInit {
         accountNum: [this.data.selectedDebtAccount.accountNum, Validators.required]
       });
     } else {
+      this.isEdit = false;
       this.debitAccountFormGroup = this.formBuilder.group({
         name: ['', Validators.required],
         routingNum: [, Validators.required],
