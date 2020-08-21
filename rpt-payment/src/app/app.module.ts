@@ -20,6 +20,7 @@ import { MaintainPayeeDialogComponent } from './maintain-payee-dialog/maintain-p
 import { HomeScreenComponent } from './home-screen/home-screen.component';
 import { ProductsDemosService } from './_services/products-demos.service';
 import { AccountInfoService } from './_services/account-info.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -44,8 +45,8 @@ import { AccountInfoService } from './_services/account-info.service';
     FlexLayoutModule,
     ReactiveFormsModule,
     FormsModule,
-    BrowserAnimationsModule
-  ],
+    BrowserAnimationsModule,
+    HttpClientModule  ],
   entryComponents: [
     HomeScreenComponent
   ],
