@@ -116,7 +116,7 @@ export class ClientPaymentComponent implements OnInit {
   submitPayment() {
     console.log('submitting payment');
     let clientPayment = new DomesticPayment();
-    clientPayment.Initiation.CreditorAccount
+    // clientPayment.Initiation.CreditorAccount;
   }
 
 }
