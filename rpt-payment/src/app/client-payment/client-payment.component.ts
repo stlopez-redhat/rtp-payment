@@ -1,4 +1,3 @@
-import { DomesticPayment } from './../common/model/domestic-payment';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MaintainAccountDialogComponent } from '../maintain-account-dialog/maintain-account-dialog.component';
@@ -12,6 +11,7 @@ import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { HttpResponse } from '@angular/common/http';
 import { ObBalances } from '../common/model/ob-balances';
+import { PartyToParty } from '../common/model/party-to-party';
 
 @Component({
   selector: 'app-client-payment',
@@ -22,7 +22,7 @@ export class ClientPaymentComponent implements OnInit {
   destroy$: Subject<boolean> = new Subject<boolean>();
   selectedDebtAccount: ObAccounts;
   selectedPayee: BankingAccountInfo;
-  accountBalance: number;
+  accountBalance: string;
   payAmount: number;
   newBalance: number;
   paymentType: string;
@@ -75,7 +75,7 @@ export class ClientPaymentComponent implements OnInit {
     this.selectedDebtAccount = event.source.value;
     if (this.selectedDebtAccount !== null) {
       this.selectedBalance = this.obBalances.filter(balance => (balance.AccountId === this.selectedDebtAccount.AccountId));
-      this.accountBalance = Number(this.selectedBalance[0].Amount.Amount);
+      this.accountBalance = this.selectedBalance[0].Amount.Amount;
       // console.log(this.selectedBalance[0].Amount.Amount);
     } else {
       this.accountBalance = null;
@@ -88,7 +88,7 @@ export class ClientPaymentComponent implements OnInit {
   }
 
   public calculateBalance() {
-    this.newBalance = this.accountBalance - this.payAmount;
+    this.newBalance = Number(this.accountBalance) - this.payAmount;
   }
 
   public editAccountDialog(): void {
@@ -115,7 +115,14 @@ export class ClientPaymentComponent implements OnInit {
 
   submitPayment() {
     console.log('submitting payment');
-    let clientPayment = new DomesticPayment();
+
+    let clientPayment = new PartyToParty(
+      'ACME412', 'FRESCO.21302.GFX.20', String(this.payAmount), this.selectedDebtAccount.Currency,
+      'UK.OBIE.SortCodeAccountNumber', '80200110203345', 'DaName', '00021',
+      'CaSchemeName', 'CaIdentification', 'CaName', 'CaSecondaryIdentificaiton',
+      'FRESCO-101', 'Internal ops code 5120101');
+    console.log(clientPayment);
+    this.accountInfoService.savePartyToPartyPmt(clientPayment).subscribe();
     // clientPayment.Initiation.CreditorAccount;
   }
 

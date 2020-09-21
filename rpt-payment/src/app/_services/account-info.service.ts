@@ -1,11 +1,19 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import { of, Observable, throwError } from 'rxjs';
 import { retry, catchError, tap } from 'rxjs/operators';
 import { ObAccounts } from '../common/model/ob-accounts';
 import { BANKACCOUNTS } from '../../assets/data/banking-account-data';
 import { ObBalances } from '../common/model/ob-balances';
 import { ObTransactions } from '../common/model/ob-transactions';
+import { ObPartyToParty } from '../common/model/ob-party-to-party';
+import { PartyToParty } from '../common/model/party-to-party';
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type':  'application/json'
+  })
+};
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +24,7 @@ export class AccountInfoService {
   public next = '';
   public last = '';
   private bankUrl = 'http://localhost:9093/';
-  private backEndUrl = "http://debtor-payment-service-rtp-demo.apps.cluster-nyc-e74d.nyc-e74d.example.opentlc.com/";
+  private backEndUrl = "http://debtor-payment-service-rtp-demo.apps.cluster-nyc-8830.nyc-8830.example.opentlc.com/";
 
 constructor(private http: HttpClient) { }
 
@@ -45,6 +53,23 @@ constructor(private http: HttpClient) { }
 
   getBalances() {
 
+  }
+
+  savePartyToPartyPmt(partyToParty: PartyToParty): Observable<PartyToParty>{
+    return this.http.post<PartyToParty>(this.bankUrl + 'users', partyToParty)
+    .pipe(
+      catchError(this.handleError)
+      // catchError(this.handleError('make party to party payment', obPartyToParty, httpOptions))
+    );
+  }
+
+  saveTest(test: string){
+    console.log(this.bankUrl + 'Test');
+    return this.http.post<string>(this.bankUrl + 'users', {'Testing': test})
+    .pipe(
+      catchError(this.handleError)
+      // catchError(this.handleError('make party to party payment', obPartyToParty, httpOptions))
+    );
   }
 
   parseLinkHeader(header) {
