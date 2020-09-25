@@ -3,6 +3,7 @@ import { AccountInfoService } from '../_services/account-info.service';
 import { BankingAccountInfo } from '../common/model/banking-account-info';
 import { UserProfile } from '../common/model/user-profile';
 import { UserDataService } from '../_services/user-data.service';
+import { ObAccounts } from '../common/model/ob-accounts';
 
 @Component({
   selector: 'app-accounts-snapshot',
@@ -12,7 +13,8 @@ import { UserDataService } from '../_services/user-data.service';
 export class AccountsSnapshotComponent implements OnInit {
   panelOpenState = false;
   payAmount: number;
-  accountInfo: BankingAccountInfo[];
+  // accountInfo: BankingAccountInfo[];
+  accountInfo: ObAccounts[];
   accounts: BankingAccountInfo[];
   user: UserProfile | null;
 
@@ -24,10 +26,16 @@ export class AccountsSnapshotComponent implements OnInit {
       this.user = user;
     });
 
-    this.accountInfoService.getAccountInfo()
-    .subscribe((account: BankingAccountInfo[]) => {
+    // this.accountInfoService.getAccountInfo()
+    // .subscribe((account: BankingAccountInfo[]) => {
+    //   this.accountInfo = account;
+    //   this.accounts = this.accountInfo.filter(accountlist => ((accountlist.accountType !== 'Payee') && (accountlist.userId === this.user.id)));
+    // });
+    this.accountInfoService.getObAccounts()
+    .subscribe((account: ObAccounts[]) => {
       this.accountInfo = account;
-      this.accounts = this.accountInfo.filter(accountlist => ((accountlist.accountType !== 'Payee') && (accountlist.userId === this.user.id)));
+      console.log(this.accountInfo);
+      // this.accounts = this.accountInfo.filter(accountlist => ((accountlist.accountType !== 'Payee') && (accountlist.userId === this.user.id)));
     });
   }
 

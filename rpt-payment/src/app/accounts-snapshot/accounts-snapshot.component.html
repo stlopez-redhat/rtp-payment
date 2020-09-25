@@ -3,21 +3,21 @@
 </div>
 <div>
   <mat-accordion>
-    <mat-expansion-panel *ngFor="let account of accounts">
+    <mat-expansion-panel *ngFor="let account of accountInfo">
       <mat-expansion-panel-header>
         <mat-panel-title fxFlex="40">
-          {{account.name}}
+          {{account.Account[0].Name}}
         </mat-panel-title>
         <mat-panel-description>
-          {{account.accountType}}
+          {{account.Nickname}}
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <div fxLayout="row" fxLayoutGap='10px'>
+      <!-- <div fxLayout="row" fxLayoutGap='10px'>
         <b>Balance:</b><span>{{account.balance | currency}}</span>
-      </div>
+      </div> -->
       <div fxLayout="row" fxLayoutGap='10px'>
-        <b>Routing Number:</b> <span>{{account.routingNum}}</span>
-        <b>Account Number:</b> <span>{{account.accountNum}}</span>
+        <b>Identification:</b> <span>{{account.Account[0].Identification}}</span>
+        <b>Account Id:</b> <span>{{account.AccountId}}</span>
       </div>
     </mat-expansion-panel>
   </mat-accordion>
@@ -31,9 +31,9 @@
     <mat-label>From Account</mat-label>
     <mat-select>
       <mat-option [value]="null"></mat-option>
-      <mat-option *ngFor="let account of accounts" [value]="account.accountNum"
+      <mat-option *ngFor="let account of accountInfo" [value]="account.Nickname"
         (onSelectionChange)="accountSelected($event)">
-        {{account.name}}
+        {{account.Nickname}}
       </mat-option>
     </mat-select>
   </mat-form-field>
@@ -48,9 +48,9 @@
     <mat-label>To Account</mat-label>
     <mat-select>
       <mat-option [value]="null"></mat-option>
-      <mat-option *ngFor="let account of accounts" [value]="account.accountNum"
+      <mat-option *ngFor="let account of accountInfo" [value]="account.Nickname"
         (onSelectionChange)="accountSelected($event)">
-        {{account.name}}
+        {{account.Nickname}}
       </mat-option>
     </mat-select>
   </mat-form-field>
