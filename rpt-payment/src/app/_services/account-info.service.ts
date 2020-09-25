@@ -3,7 +3,6 @@ import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular
 import { of, Observable, throwError } from 'rxjs';
 import { retry, catchError, tap } from 'rxjs/operators';
 import { ObAccounts } from '../common/model/ob-accounts';
-import { BANKACCOUNTS } from '../../assets/data/banking-account-data';
 import { ObBalances } from '../common/model/ob-balances';
 import { ObTransactions } from '../common/model/ob-transactions';
 import { ObPartyToParty } from '../common/model/ob-party-to-party';
@@ -50,11 +49,17 @@ constructor(private http: HttpClient) { }
 
   getAccountInfo(): Observable<BankingAccountInfo[]>{
     return this.http.get<BankingAccountInfo[]>(this.bankUrl + 'bankAccounts');
-    //return of(BANKACCOUNTS);
   }
 
   getBalances() {
 
+  }
+
+  addAccountInfo(bankingAccountInfo: BankingAccountInfo) {
+    return this.http.post<BankingAccountInfo>(this.bankUrl + 'bankAccounts', bankingAccountInfo)
+    .pipe(
+      catchError(this.handleError)
+    );
   }
 
   savePartyToPartyPmt(partyToParty: PartyToParty): Observable<PartyToParty>{

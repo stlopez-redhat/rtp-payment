@@ -2,6 +2,8 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { PaymentConfirmation } from '../common/model/payment-confirmation';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AccountInfoService } from '../_services/account-info.service';
+import { BankingAccountInfo } from '../common/model/banking-account-info';
 
 
 @Component({
@@ -14,7 +16,8 @@ export class MaintainPayeeDialogComponent implements OnInit {
   payeeAccountFormGroup: FormGroup;
   isEdit = false;
 
-  constructor(private formBuilder: FormBuilder, public dialogRef: MatDialogRef<MaintainPayeeDialogComponent>,
+  constructor(private formBuilder: FormBuilder, private accountInfoService: AccountInfoService,
+              public dialogRef: MatDialogRef<MaintainPayeeDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any) {
   }
 
@@ -44,7 +47,9 @@ export class MaintainPayeeDialogComponent implements OnInit {
   }
 
   onSubmit(): void {
-
+    this.accountInfoService.addAccountInfo(new BankingAccountInfo(this.payeeAccountFormGroup.controls['name'].value,
+          this.payeeAccountFormGroup.controls['routingNum'].value, this.payeeAccountFormGroup.controls['accountNum'].value))
+      .subscribe();
   }
 
   public applyFilter() {

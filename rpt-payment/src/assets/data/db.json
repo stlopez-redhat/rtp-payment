@@ -106,6 +106,12 @@
       "first_name": "Anna",
       "last_name": "Smith",
       "email": "annasmith23@gmail.com"
+    },
+    {
+      "name": "new Payee",
+      "routingNum": "12345",
+      "accountNum": "98765",
+      "id": 4
     }
   ],
   "posts": [

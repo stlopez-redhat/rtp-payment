@@ -8,4 +8,10 @@ export class BankingAccountInfo {
   balance: number;
   dateAdded: string;
   dateRemove: string;
+
+  constructor(name: string, routingNum: string, accountNum: string){
+    this.name = name;
+    this.routingNum = routingNum;
+    this.accountNum = accountNum;
+  }
 }
