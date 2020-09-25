@@ -108,9 +108,10 @@
       "email": "annasmith23@gmail.com"
     },
     {
-      "name": "new Payee",
-      "routingNum": "12345",
-      "accountNum": "98765",
+      "name": "test",
+      "routingNum": "123",
+      "accountNum": "321",
+      "accountType": "Payee",
       "id": 4
     }
   ],

@@ -48,7 +48,8 @@ export class MaintainPayeeDialogComponent implements OnInit {
 
   onSubmit(): void {
     this.accountInfoService.addAccountInfo(new BankingAccountInfo(this.payeeAccountFormGroup.controls['name'].value,
-          this.payeeAccountFormGroup.controls['routingNum'].value, this.payeeAccountFormGroup.controls['accountNum'].value))
+          this.payeeAccountFormGroup.controls['routingNum'].value, this.payeeAccountFormGroup.controls['accountNum'].value,
+          'Payee'))
       .subscribe();
   }
 
