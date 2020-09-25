@@ -55,7 +55,6 @@ export class ClientPaymentComponent implements OnInit {
     this.accountInfoService.getObBalances()
       .pipe(takeUntil(this.destroy$))
       .subscribe((res: ObBalances[]) => {
-        console.log(res);
         this.obBalances = res;
       });
   }
@@ -65,7 +64,6 @@ export class ClientPaymentComponent implements OnInit {
       .pipe(takeUntil(this.destroy$))
       .subscribe((res) => {
         this.obAccounts = res;
-        console.log(this.obAccounts);
       });
   }
 

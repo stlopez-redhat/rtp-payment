@@ -1,9 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AccountInfoService } from '../_services/account-info.service';
 import { BankingAccountInfo } from '../common/model/banking-account-info';
 import { UserProfile } from '../common/model/user-profile';
 import { UserDataService } from '../_services/user-data.service';
 import { ObAccounts } from '../common/model/ob-accounts';
+import { takeUntil } from 'rxjs/operators';
+import { ObBalances } from '../common/model/ob-balances';
+import { Subject } from 'rxjs';
+import { MatAccordion } from '@angular/material/expansion';
 
 @Component({
   selector: 'app-accounts-snapshot',
@@ -11,11 +15,15 @@ import { ObAccounts } from '../common/model/ob-accounts';
   styleUrls: ['./accounts-snapshot.component.scss']
 })
 export class AccountsSnapshotComponent implements OnInit {
+  @ViewChild('accordion',{static:true}) Accordion: MatAccordion;
+  destroy$: Subject<boolean> = new Subject<boolean>();
   panelOpenState = false;
   payAmount: number;
   // accountInfo: BankingAccountInfo[];
   accountInfo: ObAccounts[];
   accounts: BankingAccountInfo[];
+  obBalances: ObBalances[] = [];
+  selectedBalance: ObBalances[];
   user: UserProfile | null;
 
   constructor(private accountInfoService: AccountInfoService, private userDataService: UserDataService) { }
@@ -37,6 +45,17 @@ export class AccountsSnapshotComponent implements OnInit {
       console.log(this.accountInfo);
       // this.accounts = this.accountInfo.filter(accountlist => ((accountlist.accountType !== 'Payee') && (accountlist.userId === this.user.id)));
     });
+
+    this.accountInfoService.getObBalances()
+    .pipe(takeUntil(this.destroy$))
+    .subscribe((res: ObBalances[]) => {
+      console.log(res);
+      this.obBalances = res;
+    });
+  }
+
+  beforePanelOpened(account){
+    this.selectedBalance = this.obBalances.filter(balance => (balance.AccountId === account.AccountId));
   }
 
   accountSelected($event) {
