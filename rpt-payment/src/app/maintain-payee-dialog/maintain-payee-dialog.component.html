@@ -42,13 +42,13 @@
       <button mat-raised-button matTooltip='Cancel Transaction' color="accent" (click)="onNoClick()">
         Cancel
       </button>
-      <button *ngIf="isEdit" mat-raised-button matTooltip='Update Transaction' color="primary">
+      <button *ngIf="isEdit" mat-raised-button matTooltip='Update Transaction' color="primary" (click)="setAction('Update')">
         Update
       </button>
-      <button *ngIf="isEdit" mat-raised-button matTooltip='Delete Transaction' color="error">
+      <button *ngIf="isEdit" mat-raised-button matTooltip='Delete Transaction' color="error" (click)="setAction('Delete')">
         Delete
       </button>
-      <button *ngIf="!isEdit" mat-raised-button matTooltip='Add Transaction' color="primary">
+      <button *ngIf="!isEdit" mat-raised-button matTooltip='Add Transaction' color="primary" (click)="setAction('Add')">
         Add
       </button>
     </div>

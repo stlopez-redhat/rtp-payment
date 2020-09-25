@@ -15,6 +15,7 @@ export class MaintainPayeeDialogComponent implements OnInit {
   searchText: string;
   payeeAccountFormGroup: FormGroup;
   isEdit = false;
+  formAction: string;
 
   constructor(private formBuilder: FormBuilder, private accountInfoService: AccountInfoService,
               public dialogRef: MatDialogRef<MaintainPayeeDialogComponent>,
@@ -42,15 +43,25 @@ export class MaintainPayeeDialogComponent implements OnInit {
     }
   }
 
+  setAction(value: string): void {
+    this.formAction = value;
+  }
+
   onNoClick(): void {
     this.dialogRef.close();
   }
 
   onSubmit(): void {
-    this.accountInfoService.addAccountInfo(new BankingAccountInfo(this.payeeAccountFormGroup.controls['name'].value,
-          this.payeeAccountFormGroup.controls['routingNum'].value, this.payeeAccountFormGroup.controls['accountNum'].value,
-          'Payee'))
-      .subscribe();
+    if (this.formAction === 'Add'){
+      this.accountInfoService.addAccountInfo(new BankingAccountInfo(this.payeeAccountFormGroup.controls['name'].value,
+            this.payeeAccountFormGroup.controls['routingNum'].value, this.payeeAccountFormGroup.controls['accountNum'].value,
+            'Payee'))
+        .subscribe();
+    } else if (this.formAction === 'Delete'){
+      console.log('Delete record');
+    } else if (this.formAction === 'Update'){
+      console.log('Update record');
+    }
   }
 
   public applyFilter() {
