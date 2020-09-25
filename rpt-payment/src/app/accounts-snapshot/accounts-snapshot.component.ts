@@ -27,8 +27,8 @@ export class AccountsSnapshotComponent implements OnInit {
     this.accountInfoService.getAccountInfo()
     .subscribe((account: BankingAccountInfo[]) => {
       this.accountInfo = account;
+      this.accounts = this.accountInfo.filter(accountlist => ((accountlist.accountType !== 'Payee') && (accountlist.userId === this.user.id)));
     });
-    this.accounts = this.accountInfo.filter(account => ((account.accountType !== 'Payee') && (account.userId === this.user.id)));
   }
 
   accountSelected($event) {

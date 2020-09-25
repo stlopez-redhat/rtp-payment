@@ -37,8 +37,9 @@ export class PaymentHistoryComponent implements OnInit {
     this.accountInfoService.getAccountInfo()
     .subscribe((account: BankingAccountInfo[]) => {
       this.accountInfo = account;
+      this.accounts = this.accountInfo.filter(accountList => ((accountList.accountType !== 'Payee') && (accountList.userId === this.user.id)));
     });
-    this.accounts = this.accountInfo.filter(account => ((account.accountType !== 'Payee') && (account.userId === this.user.id)));
+    // this.accounts = this.accountInfo.filter(accountList => ((accountList.accountType !== 'Payee') && (accountList.userId === this.user.id)));
   }
 
   public applyFilter() {

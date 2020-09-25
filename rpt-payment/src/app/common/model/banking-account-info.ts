@@ -1,4 +1,4 @@
-export interface BankingAccountInfo {
+export class BankingAccountInfo {
   userId: string;
   routingNum: string;
   accountNum: string;

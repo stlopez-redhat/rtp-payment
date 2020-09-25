@@ -21,50 +21,91 @@
     {
       "Testing": "This is a test",
       "id": 4
+    }
+  ],
+  "bankAccounts": [
+    {
+      "userId": "1",
+      "routingNum": "123",
+      "accountNum": "83729",
+      "accountType": "Checking",
+      "name": "Home Account",
+      "description": "Daily bills",
+      "balance": 10000,
+      "dateAdded": "10/2/2009",
+      "dateRemove": ""
     },
     {
-      "Initiation": {
-        "DebtorAccount": {
-          "SchemeName": "UK.OBIE.SortCodeAccountNumber",
-          "Identification": "80200110203345",
-          "Name": "DaName"
-        },
-        "CreditorAccount": {
-          "SchemeName": "CaSchemeName",
-          "Identification": "CaIdentification",
-          "Name": "CaName"
-        },
-        "InstructedAmount": {},
-        "RemittanceInformation": {
-          "Reference": "FRESCO-101",
-          "Unstructured": "Internal ops code 5120101"
-        },
-        "InstructionIdentification": "ACME412",
-        "EndToEndIdentification": "FRESCO.21302.GFX.20"
-      },
-      "id": 5
+      "userId": "1",
+      "routingNum": "123",
+      "accountNum": "93817",
+      "accountType": "Savings",
+      "name": "Education Fund",
+      "description": "Johnny school fund",
+      "balance": 20000,
+      "dateAdded": "10/2/2009",
+      "dateRemove": ""
     },
     {
-      "Initiation": {
-        "DebtorAccount": {
-          "SchemeName": "UK.OBIE.SortCodeAccountNumber",
-          "Identification": "80200110203345",
-          "Name": "DaName"
-        },
-        "CreditorAccount": {
-          "SchemeName": "CaSchemeName",
-          "Identification": "CaIdentification",
-          "Name": "CaName"
-        },
-        "InstructedAmount": {},
-        "RemittanceInformation": {
-          "Reference": "FRESCO-101",
-          "Unstructured": "Internal ops code 5120101"
-        },
-        "InstructionIdentification": "ACME412",
-        "EndToEndIdentification": "FRESCO.21302.GFX.20"
-      },
-      "id": 6
+      "userId": "1",
+      "routingNum": "123",
+      "accountNum": "573820",
+      "accountType": "Savings",
+      "name": "Rainy Day",
+      "description": "Financial security",
+      "balance": 30000,
+      "dateAdded": "10/2/2009",
+      "dateRemove": ""
+    },
+    {
+      "userId": "2",
+      "routingNum": "123",
+      "accountNum": "837410",
+      "accountType": "Checking",
+      "name": "Monthly Bills",
+      "description": "Personal Checking",
+      "balance": 25000,
+      "dateAdded": "1/24/2001",
+      "dateRemove": ""
+    },
+    {
+      "userId": "1",
+      "routingNum": "123",
+      "accountNum": "0391782",
+      "accountType": "Payee",
+      "name": "OUC Utilities",
+      "description": "Home Utilities",
+      "balance": 350,
+      "dateAdded": "10/2/2009",
+      "dateRemove": ""
+    },
+    {
+      "userId": "1",
+      "routingNum": "123",
+      "accountNum": "12375783",
+      "accountType": "Payee",
+      "name": "Dillards",
+      "description": "Dillards credit card",
+      "balance": 500,
+      "dateAdded": "10/2/2009",
+      "dateRemove": ""
+    },
+    {
+      "userId": "1",
+      "routingNum": "123",
+      "accountNum": "6594277",
+      "accountType": "Payee",
+      "name": "Travel VISA",
+      "description": "Travel expenses",
+      "balance": 1000,
+      "dateAdded": "10/2/2009",
+      "dateRemove": ""
+    },
+    {
+      "id": 3,
+      "first_name": "Anna",
+      "last_name": "Smith",
+      "email": "annasmith23@gmail.com"
     }
   ],
   "posts": [

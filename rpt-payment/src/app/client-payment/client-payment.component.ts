@@ -46,9 +46,10 @@ export class ClientPaymentComponent implements OnInit {
     this.accountInfoService.getAccountInfo()
       .subscribe((account: BankingAccountInfo[]) => {
         this.accountInfo = account;
+        this.payees = this.accountInfo.filter(accountList => accountList.accountType === 'Payee');
       });
     // this.accounts = this.accountInfo.filter(account => ((account.accountType !== 'Payee') && (account.userId === this.user.id)));
-    this.payees = this.accountInfo.filter(account => account.accountType === 'Payee');
+    // this.payees = this.accountInfo.filter(account => account.accountType === 'Payee');
 
     // new open banking api link
     this.getObAccounts();

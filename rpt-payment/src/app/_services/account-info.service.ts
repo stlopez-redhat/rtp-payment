@@ -8,6 +8,7 @@ import { ObBalances } from '../common/model/ob-balances';
 import { ObTransactions } from '../common/model/ob-transactions';
 import { ObPartyToParty } from '../common/model/ob-party-to-party';
 import { PartyToParty } from '../common/model/party-to-party';
+import { BankingAccountInfo } from '../common/model/banking-account-info';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -47,8 +48,9 @@ constructor(private http: HttpClient) { }
     return this.http.get<ObTransactions[]>(this.bankUrl + 'Transactions' );
   }
 
-  getAccountInfo() {
-    return of(BANKACCOUNTS);
+  getAccountInfo(): Observable<BankingAccountInfo[]>{
+    return this.http.get<BankingAccountInfo[]>(this.bankUrl + 'bankAccounts');
+    //return of(BANKACCOUNTS);
   }
 
   getBalances() {
