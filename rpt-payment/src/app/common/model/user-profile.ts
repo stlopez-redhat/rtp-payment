@@ -1,5 +1,7 @@
 export interface UserProfile {
   id: string;
+  accountHolderID: string;
+  title: string;
   firstName: string;
   lastName: string;
   address1: string;
