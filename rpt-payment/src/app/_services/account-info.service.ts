@@ -24,12 +24,12 @@ export class AccountInfoService {
   public next = '';
   public last = '';
   private bankUrl = 'http://localhost:9093/';
-  private backEndUrl = "http://debtor-payment-service-rtp-demo.apps.cluster-nyc-8830.nyc-8830.example.opentlc.com/";
+  private backEndUrl = 'http://debtor-payment-service-rtp-demo.apps.cluster-nyc-4c15.nyc-4c15.example.opentlc.com/';
 
 constructor(private http: HttpClient) { }
 
-  getObAccounts(): Observable<ObAccounts[]>{
-      return this.http.get<ObAccounts[]>(this.bankUrl + 'Accounts' );
+  getObAccounts(userId: string): Observable<ObAccounts[]>{
+      return this.http.get<ObAccounts[]>(this.bankUrl + 'Accounts?AccountHolderId=' + userId );
   // getObAccounts() {
   //   return this.http.get<ObAccounts[]>(this.backEndUrl + 'accounts',
   //     {params: new HttpParams({fromString: '_page=1&_limit=20'}), observe: 'response'})

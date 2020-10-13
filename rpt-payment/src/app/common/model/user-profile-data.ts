@@ -2,6 +2,7 @@ import { UserProfile } from './user-profile';
 
 export class UserProfileData implements UserProfile {
   id: string;
+  accountHolderId: string;
   title: string;
   firstName: string;
   lastName: string;

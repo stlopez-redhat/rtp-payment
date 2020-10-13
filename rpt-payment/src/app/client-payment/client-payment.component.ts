@@ -60,7 +60,7 @@ export class ClientPaymentComponent implements OnInit {
   }
 
   getObAccounts() {
-    this.accountInfoService.getObAccounts()
+    this.accountInfoService.getObAccounts(this.user.accountHolderId)
       .pipe(takeUntil(this.destroy$))
       .subscribe((res) => {
         this.obAccounts = res;

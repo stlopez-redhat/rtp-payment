@@ -39,7 +39,7 @@ export class AccountsSnapshotComponent implements OnInit {
     //   this.accountInfo = account;
     //   this.accounts = this.accountInfo.filter(accountlist => ((accountlist.accountType !== 'Payee') && (accountlist.userId === this.user.id)));
     // });
-    this.accountInfoService.getObAccounts()
+    this.accountInfoService.getObAccounts(this.user.accountHolderId)
     .subscribe((account: ObAccounts[]) => {
       this.accountInfo = account;
       console.log(this.accountInfo);
