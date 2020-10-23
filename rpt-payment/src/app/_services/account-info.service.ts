@@ -23,13 +23,15 @@ export class AccountInfoService {
   public prev = '';
   public next = '';
   public last = '';
+  private userId: string;
   private bankUrl = 'http://localhost:9093/';
-  private backEndUrl = 'http://debtor-payment-service-rtp-demo.apps.cluster-nyc-4c15.nyc-4c15.example.opentlc.com/';
+  private backEndUrl = 'http://debtor-payment-service-rtp-demo.apps.cluster-albuq-1fa2.albuq-1fa2.example.opentlc.com/';
 
 constructor(private http: HttpClient) { }
 
   getObAccounts(userId: string): Observable<ObAccounts[]>{
-      return this.http.get<ObAccounts[]>(this.bankUrl + 'Accounts?AccountHolderId=' + userId );
+    this.userId = userId;
+      return this.http.get<ObAccounts[]>(this.backEndUrl + 'accounts?accountHolderId=' + userId);
   // getObAccounts() {
   //   return this.http.get<ObAccounts[]>(this.backEndUrl + 'accounts',
   //     {params: new HttpParams({fromString: '_page=1&_limit=20'}), observe: 'response'})
@@ -39,8 +41,8 @@ constructor(private http: HttpClient) { }
   //   }));
   }
 
-  getObBalances(): Observable<ObBalances[]>{
-    return this.http.get<ObBalances[]>(this.bankUrl + 'Balances' );
+  getObBalances(accountId: string): Observable<ObBalances[]>{
+    return this.http.get<ObBalances[]>(this.backEndUrl + 'accounts/' + accountId + '/balances' );
   }
 
   getObTransactions(): Observable<ObTransactions[]>{

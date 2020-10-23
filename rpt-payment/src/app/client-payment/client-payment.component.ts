@@ -52,24 +52,24 @@ export class ClientPaymentComponent implements OnInit {
     // new open banking api link
     this.getObAccounts();
 
-    this.accountInfoService.getObBalances()
-      .pipe(takeUntil(this.destroy$))
-      .subscribe((res: ObBalances[]) => {
-        this.obBalances = res;
-      });
+    // this.accountInfoService.getObBalances()
+    //   .pipe(takeUntil(this.destroy$))
+    //   .subscribe((res: ObBalances[]) => {
+    //     this.obBalances = res;
+    //   });
   }
 
   getObAccounts() {
     this.accountInfoService.getObAccounts(this.user.accountHolderId)
       .pipe(takeUntil(this.destroy$))
       .subscribe((res) => {
-        this.obAccounts = res;
+        this.obAccounts = res.Data.Account;
       });
   }
 
 
-  public udpateAccountData(event) {
-    this.selectedDebtAccount = event.source.value;
+  public udpateAccountData() {
+    // this.selectedDebtAccount = event.source.value;
     if (this.selectedDebtAccount !== null) {
       this.selectedBalance = this.obBalances.filter(balance => (balance.AccountId === this.selectedDebtAccount.AccountId));
       this.accountBalance = this.selectedBalance[0].Amount.Amount;
@@ -108,6 +108,16 @@ export class ClientPaymentComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
     });
+  }
+
+  getBalance($event) {
+    this.selectedDebtAccount = $event.source.value;
+    this.accountInfoService.getObBalances(this.selectedDebtAccount.AccountId)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((res: ObBalances[]) => {
+        this.obBalances = res.Data.Balance;
+        this.udpateAccountData();
+      });
   }
 
   submitPayment() {
