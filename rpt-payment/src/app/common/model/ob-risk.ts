@@ -1,14 +1,8 @@
-export interface ObRisk {
-  PaymentContextCode: string;
-  MerchantCategoryCode: string;
-  MerchantCustomerIdentification: string;
-  DeliveryAddress: {
-    AddressLine: [],
-    StreetName: string;
-    BuildingNumber: string;
-    PostCode: string;
-    TownName: string;
-    CountySubDivision: [],
-    Country: string;
-  };
+import { DeliveryAddress } from './ob-delivery-address';
+
+export class ObRisk {
+  PaymentContextCode: string = '';
+  MerchantCategoryCode: string = '';
+  MerchantCustomerIdentification: string = '';
+  DeliveryAddress = new DeliveryAddress();
 }

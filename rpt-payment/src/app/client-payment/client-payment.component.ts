@@ -12,6 +12,7 @@ import { Subject } from 'rxjs';
 import { HttpResponse } from '@angular/common/http';
 import { ObBalances } from '../common/model/ob-balances';
 import { PartyToParty } from '../common/model/party-to-party';
+import { ObPartyToParty } from '../common/model/ob-party-to-party';
 
 @Component({
   selector: 'app-client-payment',
@@ -123,7 +124,7 @@ export class ClientPaymentComponent implements OnInit {
   submitPayment() {
     console.log('submitting payment');
 
-    let clientPayment = new PartyToParty(
+    let clientPayment = new ObPartyToParty(
       'ACME412', 'FRESCO.21302.GFX.20', String(this.payAmount), this.selectedDebtAccount.Currency,
       'UK.OBIE.SortCodeAccountNumber', '80200110203345', 'DaName', '00021',
       'CaSchemeName', 'CaIdentification', 'CaName', 'CaSecondaryIdentificaiton',

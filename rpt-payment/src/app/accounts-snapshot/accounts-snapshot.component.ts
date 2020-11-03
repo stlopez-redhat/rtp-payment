@@ -23,6 +23,7 @@ export class AccountsSnapshotComponent implements OnInit {
   accountInfo: ObAccounts[];
   accounts: BankingAccountInfo[];
   obBalances: ObBalances[] = [];
+  selectedDebtAccount: ObAccounts;
   selectedBalance: ObBalances[];
   user: UserProfile | null;
 
@@ -46,12 +47,12 @@ export class AccountsSnapshotComponent implements OnInit {
       // this.accounts = this.accountInfo.filter(accountlist => ((accountlist.accountType !== 'Payee') && (accountlist.userId === this.user.id)));
     });
 
-    this.accountInfoService.getObBalances()
-    .pipe(takeUntil(this.destroy$))
-    .subscribe((res: ObBalances[]) => {
-      console.log(res);
-      this.obBalances = res;
-    });
+    // this.accountInfoService.getObBalances()
+    // .pipe(takeUntil(this.destroy$))
+    // .subscribe((res: ObBalances[]) => {
+    //   console.log(res);
+    //   this.obBalances = res;
+    // });
   }
 
   beforePanelOpened(account){
@@ -59,6 +60,13 @@ export class AccountsSnapshotComponent implements OnInit {
   }
 
   accountSelected($event) {
+    this.selectedDebtAccount = $event.source.value;
+    this.accountInfoService.getObBalances(this.selectedDebtAccount.AccountId)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((res: ObBalances[]) => {
+        this.obBalances = res.Data.Balance;
+        // this.udpateAccountData();
+      });
   }
 
   calculateBalance() {}

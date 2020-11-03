@@ -1,0 +1,30 @@
+{
+  "Data": {
+    "ConsentId": "",
+    "Initiation": {
+      "DebtorAccount": {
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "Identification": "80200110203345",
+        "Name": "DaName"
+      },
+      "CreditorAccount": {
+        "SchemeName": "CaSchemeName",
+        "Identification": "CaIdentification",
+        "Name": "CaName"
+      },
+      "InstructedAmount": {},
+      "RemittanceInformation": {
+        "Reference": "FRESCO-101",
+        "Unstructured": "Internal ops code 5120101"
+      },
+      "InstructionIdentification": "ACME412",
+      "EndToEndIdentification": "FRESCO.21302.GFX.20"
+    }
+  },
+  "Risk": {
+    "PaymentContextCode": "",
+    "MerchantCategoryCode": "",
+    "MerchantCustomerIdentification": "",
+    "DeliveryAddress": {}
+  }
+}
