@@ -4,7 +4,7 @@
     "Initiation": {
       "DebtorAccount": {
         "SchemeName": "UK.OBIE.SortCodeAccountNumber",
-        "Identification": "80200110203345",
+        "Identification": "80",
         "Name": "DaName"
       },
       "CreditorAccount": {
@@ -12,7 +12,10 @@
         "Identification": "CaIdentification",
         "Name": "CaName"
       },
-      "InstructedAmount": {},
+      "InstructedAmount": {
+        "Amount": "123",
+        "Currency": "GBP"
+      },
       "RemittanceInformation": {
         "Reference": "FRESCO-101",
         "Unstructured": "Internal ops code 5120101"

@@ -14,8 +14,8 @@ export class ObPartyToParty {
       // this.data.Initiation = new ObInitiation();
       this.Data.Initiation.InstructionIdentification = instructionIdentification;
       this.Data.Initiation.EndToEndIdentification = endToEndIdentification;
-      // this.Initiation.InstructedAmount.Amount = amount;
-      // this.Initiation.InstructedAmount.Currency = currency;
+      this.Data.Initiation.InstructedAmount.Amount = amount;
+      this.Data.Initiation.InstructedAmount.Currency = currency;
       this.Data.Initiation.DebtorAccount.SchemeName = daSchemeName;
       this.Data.Initiation.DebtorAccount.Identification = daIdentification;
       this.Data.Initiation.DebtorAccount.Name = daName;

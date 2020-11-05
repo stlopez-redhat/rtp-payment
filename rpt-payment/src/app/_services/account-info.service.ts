@@ -26,8 +26,7 @@ export class AccountInfoService {
   public last = '';
   private userId: string;
   private bankUrl = 'http://localhost:9093/';
-  private backEndUrl = 'http://debtor-payment-service-rtp-demo.apps.cluster-abq-4e3d.abq-4e3d.example.opentlc.com/';
-  //http://debtor-payment-service-rtp-demo.apps.cluster-abq-4e3d.abq-4e3d.example.opentlc.com/domestic-payments
+  private backEndUrl = 'http://debtor-payment-service-rtp-demo.apps.cluster-c2d5.c2d5.example.opentlc.com/';
   // httpOptions.headers =  httpOptions.headers.set('Authorization', 'my-new-auth-token');
 
 constructor(private http: HttpClient) { }
@@ -68,7 +67,7 @@ constructor(private http: HttpClient) { }
   }
 
   savePartyToPartyPmt(partyToParty: ObPartyToParty): Observable<ObPartyToParty>{
-    return this.http.post<ObPartyToParty>(this.backEndUrl + 'domestic-payments', partyToParty, httpOptions)
+    return this.http.post<ObPartyToParty>(this.backEndUrl + 'domestic-payments', partyToParty)
     .pipe(
       catchError(this.handleError)
       // catchError(this.handleError('make party to party payment', obPartyToParty, httpOptions))
