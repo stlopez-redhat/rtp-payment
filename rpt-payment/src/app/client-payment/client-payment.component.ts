@@ -123,11 +123,13 @@ export class ClientPaymentComponent implements OnInit {
 
   submitPayment() {
     console.log('submitting payment');
+    // console.log(this.selectedDebtAccount);
 
     let clientPayment = new ObPartyToParty(
       'ACME412', 'FRESCO.21302.GFX.20', String(this.payAmount), this.selectedDebtAccount.Currency,
       'UK.OBIE.SortCodeAccountNumber', '80200110203345', 'DaName', '00021',
-      'CaSchemeName', 'CaIdentification', 'CaName', 'CaSecondaryIdentificaiton',
+      this.selectedDebtAccount.Account[0].SchemeName, this.selectedDebtAccount.Account[0].Identification,
+      this.selectedDebtAccount.Account[0].Name, this.selectedDebtAccount.Account[0].SecondaryIdentification,
       'FRESCO-101', 'Internal ops code 5120101');
     console.log(clientPayment);
     this.accountInfoService.savePartyToPartyPmt(clientPayment).subscribe();
