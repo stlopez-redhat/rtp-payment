@@ -30,7 +30,6 @@ export class AccountInfoService {
   private bankUrl = 'http://localhost:9093/';
   private backEndUrl = 'http://debtor-payment-service-rtp-demo.apps.cluster-3fc6.3fc6.example.opentlc.com/';
   // httpOptions.headers =  httpOptions.headers.set('Authorization', 'my-new-auth-token');
-
 constructor(private http: HttpClient) { }
 
   getObAccounts(userId: string): Observable<ObAccounts>{

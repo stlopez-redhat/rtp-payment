@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "rpt-payment"
+  "defaultProject": "rpt-payment",
+  "cli": {
+    "analytics": "1e35e677-1316-445a-9f91-8f37fa19e828"
+  }
 }
