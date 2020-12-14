@@ -8,6 +8,9 @@ import { takeUntil } from 'rxjs/operators';
 import { ObBalances } from '../common/model/ob-balances';
 import { Subject } from 'rxjs';
 import { MatAccordion } from '@angular/material/expansion';
+import { ObAccount } from '../common/model/ob-account';
+import { ObAccountsData } from '../common/model/ob-accounts-data';
+import { ObBalance } from '../common/model/ob-balance';
 
 @Component({
   selector: 'app-accounts-snapshot',
@@ -20,11 +23,11 @@ export class AccountsSnapshotComponent implements OnInit {
   panelOpenState = false;
   payAmount: number;
   // accountInfo: BankingAccountInfo[];
-  accountInfo: ObAccounts[];
+  accountInfo: ObAccountsData[];
   accounts: BankingAccountInfo[];
-  obBalances: ObBalances[] = [];
+  obBalances: ObBalance[];
   selectedDebtAccount: ObAccounts;
-  selectedBalance: ObBalances[];
+  selectedBalance: ObBalance[];
   user: UserProfile | null;
 
   constructor(private accountInfoService: AccountInfoService, private userDataService: UserDataService) { }
@@ -41,8 +44,8 @@ export class AccountsSnapshotComponent implements OnInit {
     //   this.accounts = this.accountInfo.filter(accountlist => ((accountlist.accountType !== 'Payee') && (accountlist.userId === this.user.id)));
     // });
     this.accountInfoService.getObAccounts(this.user.accountHolderId)
-    .subscribe((account: ObAccounts[]) => {
-      this.accountInfo = account;
+    .subscribe((account: ObAccounts) => {
+      this.accountInfo = account.Data.Accounts;
       console.log(this.accountInfo);
       // this.accounts = this.accountInfo.filter(accountlist => ((accountlist.accountType !== 'Payee') && (accountlist.userId === this.user.id)));
     });
@@ -61,9 +64,9 @@ export class AccountsSnapshotComponent implements OnInit {
 
   accountSelected($event) {
     this.selectedDebtAccount = $event.source.value;
-    this.accountInfoService.getObBalances(this.selectedDebtAccount.AccountId)
+    this.accountInfoService.getObBalances(this.selectedDebtAccount.Data.Accounts[0].AccountId)
       .pipe(takeUntil(this.destroy$))
-      .subscribe((res: ObBalances[]) => {
+      .subscribe((res: ObBalances) => {
         this.obBalances = res.Data.Balance;
         // this.udpateAccountData();
       });

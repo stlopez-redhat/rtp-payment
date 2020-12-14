@@ -11,8 +11,10 @@ import { BankingAccountInfo } from '../common/model/banking-account-info';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type':  'application/json',
-    Accept: '*/*'
+    //'Content-Type':  'application/json',
+    'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
+    //'Access-Control-Allow-Methods': 'GET',
+    'Access-Control-Allow-Origin': 'http://localhost:4200'
   })
 };
 
@@ -26,14 +28,14 @@ export class AccountInfoService {
   public last = '';
   private userId: string;
   private bankUrl = 'http://localhost:9093/';
-  private backEndUrl = 'http://debtor-payment-service-rtp-demo.apps.cluster-c2d5.c2d5.example.opentlc.com/';
+  private backEndUrl = 'http://debtor-payment-service-rtp-demo.apps.cluster-3fc6.3fc6.example.opentlc.com/';
   // httpOptions.headers =  httpOptions.headers.set('Authorization', 'my-new-auth-token');
 
 constructor(private http: HttpClient) { }
 
-  getObAccounts(userId: string): Observable<ObAccounts[]>{
+  getObAccounts(userId: string): Observable<ObAccounts>{
     this.userId = userId;
-      return this.http.get<ObAccounts[]>(this.backEndUrl + 'accounts?accountHolderId=' + userId);
+      return this.http.get<ObAccounts>(this.backEndUrl + 'accounts?accountHolderId=' + userId, httpOptions);
   // getObAccounts() {
   //   return this.http.get<ObAccounts[]>(this.backEndUrl + 'accounts',
   //     {params: new HttpParams({fromString: '_page=1&_limit=20'}), observe: 'response'})
@@ -43,8 +45,8 @@ constructor(private http: HttpClient) { }
   //   }));
   }
 
-  getObBalances(accountId: string): Observable<ObBalances[]>{
-    return this.http.get<ObBalances[]>(this.backEndUrl + 'accounts/' + accountId + '/balances' );
+  getObBalances(accountId: string): Observable<ObBalances>{
+    return this.http.get<ObBalances>(this.backEndUrl + 'accounts/' + accountId + '/balances' );
   }
 
   getObTransactions(): Observable<ObTransactions[]>{
@@ -67,7 +69,7 @@ constructor(private http: HttpClient) { }
   }
 
   savePartyToPartyPmt(partyToParty: ObPartyToParty): Observable<ObPartyToParty>{
-    return this.http.post<ObPartyToParty>(this.backEndUrl + 'domestic-payments', partyToParty)
+    return this.http.post<ObPartyToParty>(this.backEndUrl + 'domestic-payments', partyToParty, httpOptions)
     .pipe(
       catchError(this.handleError)
       // catchError(this.handleError('make party to party payment', obPartyToParty, httpOptions))

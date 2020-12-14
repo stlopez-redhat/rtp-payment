@@ -1,8 +1,8 @@
 import { DeliveryAddress } from './ob-delivery-address';
 
 export class ObRisk {
-  PaymentContextCode: string = '';
-  MerchantCategoryCode: string = '';
-  MerchantCustomerIdentification: string = '';
+  PaymentContextCode = '';
+  MerchantCategoryCode = '';
+  MerchantCustomerIdentification = '';
   DeliveryAddress = new DeliveryAddress();
 }

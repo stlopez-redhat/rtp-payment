@@ -13,6 +13,8 @@ import { HttpResponse } from '@angular/common/http';
 import { ObBalances } from '../common/model/ob-balances';
 import { PartyToParty } from '../common/model/party-to-party';
 import { ObPartyToParty } from '../common/model/ob-party-to-party';
+import { ObAccountsData } from '../common/model/ob-accounts-data';
+import { ObBalance } from '../common/model/ob-balance';
 
 @Component({
   selector: 'app-client-payment',
@@ -21,7 +23,7 @@ import { ObPartyToParty } from '../common/model/ob-party-to-party';
 })
 export class ClientPaymentComponent implements OnInit {
   destroy$: Subject<boolean> = new Subject<boolean>();
-  selectedDebtAccount: ObAccounts;
+  selectedDebtAccount: ObAccountsData;
   selectedPayee: BankingAccountInfo;
   accountBalance: string;
   payAmount: number;
@@ -31,10 +33,10 @@ export class ClientPaymentComponent implements OnInit {
   accountInfo: BankingAccountInfo[];
   accounts: BankingAccountInfo[];
   payees: BankingAccountInfo[];
-  obAccounts: ObAccounts[] = [];
-  obBalances: ObBalances[] = [];
+  obAccounts: ObAccountsData[];
+  obBalances: ObBalance[] = [];
   user: UserProfile | null;
-  selectedBalance: ObBalances[];
+  selectedBalance: ObBalance[];
 
   constructor(public dialog: MatDialog, private accountInfoService: AccountInfoService, private userDataService: UserDataService) { }
 
@@ -64,7 +66,7 @@ export class ClientPaymentComponent implements OnInit {
     this.accountInfoService.getObAccounts(this.user.accountHolderId)
       .pipe(takeUntil(this.destroy$))
       .subscribe((res) => {
-        this.obAccounts = res.Data.Account;
+        this.obAccounts = res.Data.Accounts;
       });
   }
 
@@ -115,7 +117,7 @@ export class ClientPaymentComponent implements OnInit {
     this.selectedDebtAccount = $event.source.value;
     this.accountInfoService.getObBalances(this.selectedDebtAccount.AccountId)
       .pipe(takeUntil(this.destroy$))
-      .subscribe((res: ObBalances[]) => {
+      .subscribe((res: ObBalances) => {
         this.obBalances = res.Data.Balance;
         this.udpateAccountData();
       });
@@ -123,7 +125,7 @@ export class ClientPaymentComponent implements OnInit {
 
   submitPayment() {
     console.log('submitting payment');
-    // console.log(this.selectedDebtAccount);
+    console.log(this.selectedDebtAccount);
 
     let clientPayment = new ObPartyToParty(
       'ACME412', 'FRESCO.21302.GFX.20', String(this.payAmount), this.selectedDebtAccount.Currency,
