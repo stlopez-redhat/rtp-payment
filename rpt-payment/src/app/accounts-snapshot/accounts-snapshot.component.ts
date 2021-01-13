@@ -6,7 +6,7 @@ import { UserDataService } from '../_services/user-data.service';
 import { ObAccounts } from '../common/model/ob-accounts';
 import { takeUntil } from 'rxjs/operators';
 import { ObBalances } from '../common/model/ob-balances';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { MatAccordion } from '@angular/material/expansion';
 import { ObAccount } from '../common/model/ob-account';
 import { ObAccountsData } from '../common/model/ob-accounts-data';
@@ -62,12 +62,12 @@ export class AccountsSnapshotComponent implements OnInit {
     this.selectedBalance = this.obBalances.filter(balance => (balance.AccountId === account.AccountId));
   }
 
-  accountSelected($event) {
+  accountSelected($event)  {
     this.selectedDebtAccount = $event.source.value;
     this.accountInfoService.getObBalances(this.selectedDebtAccount.Data.Accounts[0].AccountId)
       .pipe(takeUntil(this.destroy$))
-      .subscribe((res: ObBalances) => {
-        this.obBalances = res.Data.Balance;
+      .subscribe((res) => {
+        // this.obBalances = res.Data.Balance;
         // this.udpateAccountData();
       });
   }

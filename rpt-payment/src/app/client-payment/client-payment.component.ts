@@ -66,7 +66,7 @@ export class ClientPaymentComponent implements OnInit {
     this.accountInfoService.getObAccounts(this.user.accountHolderId)
       .pipe(takeUntil(this.destroy$))
       .subscribe((res) => {
-        this.obAccounts = res.Data.Accounts;
+        // this.obAccounts = res.Data.Account;
       });
   }
 
@@ -117,8 +117,8 @@ export class ClientPaymentComponent implements OnInit {
     this.selectedDebtAccount = $event.source.value;
     this.accountInfoService.getObBalances(this.selectedDebtAccount.AccountId)
       .pipe(takeUntil(this.destroy$))
-      .subscribe((res: ObBalances) => {
-        this.obBalances = res.Data.Balance;
+      .subscribe((res ) => {
+        // this.obBalances = res.Data.Balance;
         this.udpateAccountData();
       });
   }
