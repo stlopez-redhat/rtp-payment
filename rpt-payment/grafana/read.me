@@ -1,1 +1,71 @@
+Grafana Install and Setup
 
+Step 1.  Open the Console for the OpenShift instance that you have created.
+
+        This will be at the URL given to you in the RHPDS email confirming that your OpenShift instance is up and running.
+
+Step 2. On the left side-bar of the OpenShift Console you will find a Tab OPERATORS
+
+        
+
+    Select the sub-tab OperatorHub and click on it.
+
+Step 3.  A page for OperatorHub will appear.
+
+Step 4.  In the box labeled “Filter” type “Grafana”
+
+Step 5.  Click on “Grafana Operator”
+
+Step 6. A new window will appear for the installation of Grafana.
+
+     In “A specific namespace on Cluster” select “rtp-demo”
+    Click Subscribe
+
+Step 7.  Go to Operators/Installed Operators
+
+    In the list of Operators: 
+
+    Click on Grafana Operator
+
+    Select Create Instance - Then In YAML
+
+    Change Name to “rtp-grafana’
+    Change NameSpace to “rtp-demo”
+
+    Click Create
+
+    Click Grafana Dashboard/create instance
+
+    Replace yaml text with content of “simple-dashboard.yaml” (see below) by simple copy paste
+
+    Click on Grafana Datasource/create instance
+
+    Paste in the content of “grafana-mysql-datasource.yaml” (see below)
+    Click Create
+
+Step 8.  Open Grafana Console
+
+    In OpenShift Console go to Networking/Routes open it.
+    In row for grafana-route click on location
+    A new browser tab will open.
+
+    Go to arrow in left tab
+    Sign-in as
+
+    User:                  root
+    Password:         secret
+
+    In left side-bar click on + (Plus sign)
+
+    Select Import
+    Either Upload
+
+    Payment Process Dashboard 5 boxes.json
+
+    Or Copy and paste the contents of that file.
+
+Step 9.  Open The Dashborad
+
+    Go to Manage click on Dashboards
+    Select namespace “rtp-demo”
+    Open Dashboard named
