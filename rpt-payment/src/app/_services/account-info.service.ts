@@ -48,8 +48,11 @@ constructor(private http: HttpClient) { }
     return this.http.get<ObBalances>(this.backEndUrl + 'accounts/' + accountId + '/balances' );
   }
 
-  getObTransactions(): Observable<ObTransactions[]>{
-    return this.http.get<ObTransactions[]>(this.bankUrl + 'Transactions' );
+  getObTransactions(accountId: string): Observable<ObTransactions[]>{
+    return this.http.get<ObTransactions[]>(this.bankUrl + 'accounts/' + accountId + '/transactions' )
+    .pipe(
+      catchError(this.handleError)
+    );
   }
 
   getAccountInfo(): Observable<BankingAccountInfo[]>{

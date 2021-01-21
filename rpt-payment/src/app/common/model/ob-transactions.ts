@@ -11,7 +11,7 @@ export interface ObTransactions {
   TransactionId: string;
   TransactionReference: string;
   Amount: ObAmounts;
-  StatementReference: string;
+  StatementReference: string[];
   CreditDebitIndicator: string;
   Status: string;
   TransactionMutability: string;
