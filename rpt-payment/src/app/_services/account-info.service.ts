@@ -9,6 +9,7 @@ import { ObPartyToParty } from '../common/model/ob-party-to-party';
 import { PartyToParty } from '../common/model/party-to-party';
 import { BankingAccountInfo } from '../common/model/banking-account-info';
 
+
 const httpOptions = {
   headers: new HttpHeaders({
     //'Content-Type':  'application/json',
@@ -27,8 +28,8 @@ export class AccountInfoService {
   public next = '';
   public last = '';
   private userId: string;
-  private bankUrl = 'http://localhost:9093/';
-  private backEndUrl = 'http://debtor-payment-service-rtp-demo.apps.cluster-3fc6.3fc6.example.opentlc.com/';
+  private bankUrl = '/ui/';
+  private backEndUrl = '/api/';
   // httpOptions.headers =  httpOptions.headers.set('Authorization', 'my-new-auth-token');
 constructor(private http: HttpClient) { }
 
