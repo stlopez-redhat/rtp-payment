@@ -67,7 +67,7 @@ export class AccountsSnapshotComponent implements OnInit {
     this.accountInfoService.getObBalances(this.selectedDebtAccount.Data.Accounts[0].AccountId)
       .pipe(takeUntil(this.destroy$))
       .subscribe((res) => {
-        // this.obBalances = res.Data.Balance;
+        this.obBalances = res.Data.Balance;
         // this.udpateAccountData();
       });
   }
